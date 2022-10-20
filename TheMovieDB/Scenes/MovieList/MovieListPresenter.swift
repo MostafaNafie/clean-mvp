@@ -12,8 +12,8 @@ final class MovieListPresenter {
     
     private let popularMoviesUseCase: PopularMoviesUseCase!
     
-    init(movieListUseCase: PopularMoviesUseCase) {
-        self.popularMoviesUseCase = movieListUseCase
+    init(popularMoviesUseCase: PopularMoviesUseCase) {
+        self.popularMoviesUseCase = popularMoviesUseCase
     }
     
     func fetchMovies() {
