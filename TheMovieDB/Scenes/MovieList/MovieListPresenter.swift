@@ -7,11 +7,18 @@
 
 import Foundation
 
-class MovieListPresenter {
+final class MovieListPresenter {
     weak var view: MovieListView!
     
+    private let movieListUseCase: MovieListUseCase!
+    
+    init(movieListUseCase: MovieListUseCase) {
+        self.movieListUseCase = movieListUseCase
+    }
+    
     func fetchMovies() {
-        view.showMovies()
+        movieListUseCase.fetchMovies {
+            view.showMovies()
+        }
     }
 }
-

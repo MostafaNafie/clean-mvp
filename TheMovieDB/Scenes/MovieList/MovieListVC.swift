@@ -11,7 +11,7 @@ protocol MovieListView: AnyObject {
    func showMovies()
 }
 
-class MovieListVC: UIViewController {
+final class MovieListVC: UIViewController {
     private let presenter: MovieListPresenter!
     
     init(presenter: MovieListPresenter) {

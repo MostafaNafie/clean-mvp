@@ -13,6 +13,8 @@
 		A36622CC29011BAD006B9E4C /* MovieListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36622CA29011BAD006B9E4C /* MovieListVC.swift */; };
 		A36622CD29011BAD006B9E4C /* MovieListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A36622CB29011BAD006B9E4C /* MovieListVC.xib */; };
 		A36622CF29011D74006B9E4C /* MovieListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36622CE29011D74006B9E4C /* MovieListPresenter.swift */; };
+		A36622D229012493006B9E4C /* MovieListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36622D129012493006B9E4C /* MovieListUseCase.swift */; };
+		A36622D42901B1C2006B9E4C /* MovieListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36622D32901B1C2006B9E4C /* MovieListService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		A36622CA29011BAD006B9E4C /* MovieListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListVC.swift; sourceTree = "<group>"; };
 		A36622CB29011BAD006B9E4C /* MovieListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListVC.xib; sourceTree = "<group>"; };
 		A36622CE29011D74006B9E4C /* MovieListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListPresenter.swift; sourceTree = "<group>"; };
+		A36622D129012493006B9E4C /* MovieListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListUseCase.swift; sourceTree = "<group>"; };
+		A36622D32901B1C2006B9E4C /* MovieListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 		A36622C929011B76006B9E4C /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
+				A36622D32901B1C2006B9E4C /* MovieListService.swift */,
+				A36622D129012493006B9E4C /* MovieListUseCase.swift */,
 				A36622CE29011D74006B9E4C /* MovieListPresenter.swift */,
 				A36622CA29011BAD006B9E4C /* MovieListVC.swift */,
 				A36622CB29011BAD006B9E4C /* MovieListVC.xib */,
@@ -164,6 +170,8 @@
 			files = (
 				A36622B5290112F6006B9E4C /* AppDelegate.swift in Sources */,
 				A36622CF29011D74006B9E4C /* MovieListPresenter.swift in Sources */,
+				A36622D42901B1C2006B9E4C /* MovieListService.swift in Sources */,
+				A36622D229012493006B9E4C /* MovieListUseCase.swift in Sources */,
 				A36622CC29011BAD006B9E4C /* MovieListVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,7 +315,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T7928YUM2A;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TheMovieDB/Info.plist;
+				INFOPLIST_FILE = TheMovieDB/Common/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -336,7 +344,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T7928YUM2A;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TheMovieDB/Info.plist;
+				INFOPLIST_FILE = TheMovieDB/Common/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
