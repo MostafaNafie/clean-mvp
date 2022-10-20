@@ -10,15 +10,21 @@ import Foundation
 final class MovieListPresenter {
     weak var view: MovieListView!
     
-    private let movieListUseCase: MovieListUseCase!
+    private let popularMoviesUseCase: PopularMoviesUseCase!
     
-    init(movieListUseCase: MovieListUseCase) {
-        self.movieListUseCase = movieListUseCase
+    init(movieListUseCase: PopularMoviesUseCase) {
+        self.popularMoviesUseCase = movieListUseCase
     }
     
     func fetchMovies() {
-        movieListUseCase.fetchMovies {
-            view.showMovies()
+        popularMoviesUseCase.fetchMovies(page: 1) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+                case .success(let movies):
+                    self.view.showMovies(movies)
+                case .failure(let error):
+                    print(#function, error)
+            }
         }
     }
 }

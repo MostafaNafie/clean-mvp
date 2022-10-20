@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MovieListView: AnyObject {
-   func showMovies()
+    func showMovies(_ movies: [Movie])
 }
 
 final class MovieListVC: UIViewController {
@@ -30,7 +30,7 @@ final class MovieListVC: UIViewController {
 }
 
 extension MovieListVC: MovieListView {
-    func showMovies() {
-        print(#function)
+    func showMovies(_ movies: [Movie]) {
+        print(#function, movies)
     }
 }
