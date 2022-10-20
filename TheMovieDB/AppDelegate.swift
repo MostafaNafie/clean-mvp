@@ -12,7 +12,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootVC = ViewController()
+        let presenter = MovieListPresenter()
+        let rootVC = MovieListVC(presenter: presenter)
+        presenter.view = rootVC
         window = UIWindow()
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
