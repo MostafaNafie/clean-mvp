@@ -57,10 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				A36622B4290112F6006B9E4C /* AppDelegate.swift */,
+				A36622D029012361006B9E4C /* Common */,
 				A36622C829011B66006B9E4C /* Scenes */,
-				A36622BD290112F7006B9E4C /* Assets.xcassets */,
-				A36622BF290112F7006B9E4C /* LaunchScreen.storyboard */,
-				A36622C2290112F7006B9E4C /* Info.plist */,
 			);
 			path = TheMovieDB;
 			sourceTree = "<group>";
@@ -81,6 +79,16 @@
 				A36622CB29011BAD006B9E4C /* MovieListVC.xib */,
 			);
 			path = MovieList;
+			sourceTree = "<group>";
+		};
+		A36622D029012361006B9E4C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A36622BD290112F7006B9E4C /* Assets.xcassets */,
+				A36622BF290112F7006B9E4C /* LaunchScreen.storyboard */,
+				A36622C2290112F7006B9E4C /* Info.plist */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
