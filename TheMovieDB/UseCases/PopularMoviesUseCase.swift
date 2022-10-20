@@ -8,9 +8,9 @@
 import Foundation
 
 struct PopularMoviesUseCase {
-    private let networkService: MovieListServicing
+    private let networkService: PopularMoviesServicing
     
-    init(networkService: MovieListServicing) {
+    init(networkService: PopularMoviesServicing) {
         self.networkService = networkService
     }
     
