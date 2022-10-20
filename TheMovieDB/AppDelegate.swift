@@ -12,7 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let presenter = MovieListPresenter()
+        let movieListUseCase = MovieListUseCase(networkService: MovieListService())
+        let presenter = MovieListPresenter(movieListUseCase: movieListUseCase)
         let rootVC = MovieListVC(presenter: presenter)
         presenter.view = rootVC
         window = UIWindow()
