@@ -40,6 +40,9 @@
 		A3A7E0EA2902B0C4009AD2E5 /* MoviesSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A7E0E92902B0C4009AD2E5 /* MoviesSearchRequest.swift */; };
 		A3A7E0EC2902B96F009AD2E5 /* MoviesResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A7E0EB2902B96F009AD2E5 /* MoviesResponseMapper.swift */; };
 		A3A7E0F22902C601009AD2E5 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A7E0F12902C601009AD2E5 /* Debouncer.swift */; };
+		A3A7E0F42902D178009AD2E5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A7E0F32902D178009AD2E5 /* Coordinator.swift */; };
+		A3A7E0F72902D7B7009AD2E5 /* MovieListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A7E0F62902D7B7009AD2E5 /* MovieListCoordinator.swift */; };
+		A3A7E0F92902D7EE009AD2E5 /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A7E0F82902D7EE009AD2E5 /* DependencyInjection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +93,9 @@
 		A3A7E0E92902B0C4009AD2E5 /* MoviesSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchRequest.swift; sourceTree = "<group>"; };
 		A3A7E0EB2902B96F009AD2E5 /* MoviesResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesResponseMapper.swift; sourceTree = "<group>"; };
 		A3A7E0F12902C601009AD2E5 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		A3A7E0F32902D178009AD2E5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		A3A7E0F62902D7B7009AD2E5 /* MovieListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCoordinator.swift; sourceTree = "<group>"; };
+		A3A7E0F82902D7EE009AD2E5 /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
 		B94C3607A6B27EE1524B510D /* Pods-TheMovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDBTests.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDBTests/Pods-TheMovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		CF4965D6DD7CC7FD0BF061B7 /* Pods_TheMovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8653B95DBE44A2124F8E4CA /* Pods-TheMovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDB.debug.xcconfig"; path = "Target Support Files/Pods-TheMovieDB/Pods-TheMovieDB.debug.xcconfig"; sourceTree = "<group>"; };
@@ -190,6 +196,8 @@
 		A36622D029012361006B9E4C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A3A7E0F82902D7EE009AD2E5 /* DependencyInjection.swift */,
+				A3A7E0F52902D7A3009AD2E5 /* Coordinators */,
 				A3A7E0F02902C5F3009AD2E5 /* Helpers */,
 				A3A7E0E229029B67009AD2E5 /* Extensions */,
 				A36622BD290112F7006B9E4C /* Assets.xcassets */,
@@ -343,6 +351,15 @@
 				A3A7E0F12902C601009AD2E5 /* Debouncer.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A3A7E0F52902D7A3009AD2E5 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				A3A7E0F32902D178009AD2E5 /* Coordinator.swift */,
+				A3A7E0F62902D7B7009AD2E5 /* MovieListCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -520,8 +537,10 @@
 				A36622D92901BA87006B9E4C /* NetworkingRequest.swift in Sources */,
 				A3A7E0DA29026C08009AD2E5 /* MovieListDataSource.swift in Sources */,
 				A36622DC2901BAD3006B9E4C /* PopularMoviesRequest.swift in Sources */,
+				A3A7E0F72902D7B7009AD2E5 /* MovieListCoordinator.swift in Sources */,
 				A36622CF29011D74006B9E4C /* MovieListPresenter.swift in Sources */,
 				A36622D42901B1C2006B9E4C /* PopularMoviesService.swift in Sources */,
+				A3A7E0F42902D178009AD2E5 /* Coordinator.swift in Sources */,
 				A36622E42901C93C006B9E4C /* NetworkingConstants.swift in Sources */,
 				A3A7E0E62902AAD3009AD2E5 /* SearchMoviesService.swift in Sources */,
 				A36622DE2901BFA4006B9E4C /* HTTPMethod.swift in Sources */,
@@ -535,6 +554,7 @@
 				A36622EF2901DA19006B9E4C /* HTTPClient.swift in Sources */,
 				A3A7E0EA2902B0C4009AD2E5 /* MoviesSearchRequest.swift in Sources */,
 				A36622D229012493006B9E4C /* PopularMoviesUseCase.swift in Sources */,
+				A3A7E0F92902D7EE009AD2E5 /* DependencyInjection.swift in Sources */,
 				A36622E22901C6AD006B9E4C /* NetworkError.swift in Sources */,
 				A36622CC29011BAD006B9E4C /* MovieListVC.swift in Sources */,
 			);

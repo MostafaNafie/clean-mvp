@@ -17,8 +17,9 @@ final class MovieListPresenter {
     weak var view: MovieListView!
     
     // MARK: - Private Properties
-    private let popularMoviesUseCase: PopularMoviesUseCase!
-    private let searchMoviesUseCase: SearchMoviesUseCase!
+    private let popularMoviesUseCase: PopularMoviesUseCase
+    private let searchMoviesUseCase: SearchMoviesUseCase
+    private let coordinator: MovieListCoordinating
     private var currentState: MovieListPresenterState = .popularMovies
     private var popularMovies: [Movie] =  []
     private var currentPage = 1
@@ -26,9 +27,12 @@ final class MovieListPresenter {
     private var query = ""
     
     // MARK: - Init
-    init(popularMoviesUseCase: PopularMoviesUseCase, searchMoviesUseCase: SearchMoviesUseCase) {
+    init(popularMoviesUseCase: PopularMoviesUseCase,
+         searchMoviesUseCase: SearchMoviesUseCase,
+         coordinator: MovieListCoordinating) {
         self.popularMoviesUseCase = popularMoviesUseCase
         self.searchMoviesUseCase = searchMoviesUseCase
+        self.coordinator = coordinator
     }
     
     // MARK: - Public Methods
@@ -77,6 +81,10 @@ final class MovieListPresenter {
         searchMoviesUseCase.fetchMovies(by: query, at: page) { [weak self] result in
             self?.handleMoviesResult(result)
         }
+    }
+    
+    func didSelectMovie() {
+        coordinator.navigateToMovieDetails()
     }
 }
 
