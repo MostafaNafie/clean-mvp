@@ -29,6 +29,7 @@
 		A36623012901E456006B9E4C /* SpyMovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36623002901E456006B9E4C /* SpyMovieListView.swift */; };
 		A36623032901E473006B9E4C /* MockPopularMoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36623022901E473006B9E4C /* MockPopularMoviesService.swift */; };
 		A3A7E0DA29026C08009AD2E5 /* MovieListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A7E0D929026C08009AD2E5 /* MovieListDataSource.swift */; };
+		A3A7E0DC29029697009AD2E5 /* MovieListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A7E0DB29029697009AD2E5 /* MovieListDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		A36623002901E456006B9E4C /* SpyMovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyMovieListView.swift; sourceTree = "<group>"; };
 		A36623022901E473006B9E4C /* MockPopularMoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPopularMoviesService.swift; sourceTree = "<group>"; };
 		A3A7E0D929026C08009AD2E5 /* MovieListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDataSource.swift; sourceTree = "<group>"; };
+		A3A7E0DB29029697009AD2E5 /* MovieListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				A3A7E0D929026C08009AD2E5 /* MovieListDataSource.swift */,
+				A3A7E0DB29029697009AD2E5 /* MovieListDelegate.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				A36622E42901C93C006B9E4C /* NetworkingConstants.swift in Sources */,
 				A36622DE2901BFA4006B9E4C /* HTTPMethod.swift in Sources */,
 				A36622D62901B2F9006B9E4C /* URLSessionClient.swift in Sources */,
+				A3A7E0DC29029697009AD2E5 /* MovieListDelegate.swift in Sources */,
 				A36622E62901CDA0006B9E4C /* Movie.swift in Sources */,
 				A36622E02901C1D0006B9E4C /* MoviesResponse.swift in Sources */,
 				A36622EF2901DA19006B9E4C /* HTTPClient.swift in Sources */,

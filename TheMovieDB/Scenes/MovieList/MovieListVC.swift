@@ -18,10 +18,12 @@ final class MovieListVC: UIViewController {
     // MARK: - Properties
     private let presenter: MovieListPresenter!
     private let dataSource: MovieListDataSource!
+    private let delegate: MovieListDelegate!
     
-    init(presenter: MovieListPresenter, dataSource: MovieListDataSource) {
+    init(presenter: MovieListPresenter, dataSource: MovieListDataSource, delegate: MovieListDelegate) {
         self.presenter = presenter
         self.dataSource = dataSource
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -44,10 +46,6 @@ extension MovieListVC: MovieListView {
     }
 }
 
-// MARK: - TableView Delegate
-extension MovieListVC: UITableViewDelegate {
-}
-
 // MARK: - Private helpers
 private extension MovieListVC {
     func setupUI() {
@@ -56,7 +54,7 @@ private extension MovieListVC {
     }
     
     func setupTableView() {
-        tableView.delegate = self
+        tableView.delegate = delegate
         tableView.dataSource = dataSource
     }
 }

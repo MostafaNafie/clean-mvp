@@ -14,15 +14,14 @@ struct PopularMoviesUseCase {
         self.networkService = networkService
     }
     
-    func fetchMovies(page: Int, completion: @escaping (Result<[Int: [Movie]], Error>) -> ()) {
+    func fetchMovies(page: Int, completion: @escaping (Result<(totalPages: Int, movies: [Movie]), Error>) -> ()) {
         networkService.fetchPopularMovies(page: page) { result in
-            var response: Result<[Int: [Movie]], Error>!
+            var response: Result<(totalPages: Int, movies: [Movie]), Error>!
             defer { completion(response) }
             switch result {
                 case .success(let moviesResponse):
                     let movies = mapResponseToMovies(moviesResponse)
-                    let yearsToMovies = groupMoviesByYear(movies)
-                    response = .success(yearsToMovies)
+                    response = .success((moviesResponse.totalPages, movies))
                 case .failure(let error):
                     response = .failure(error)
             }
@@ -35,19 +34,8 @@ private extension PopularMoviesUseCase {
         response.results.compactMap {
             .init(title: $0.title,
                   overview: $0.overview,
-                  releaseYear: Int($0.releaseDate.components(separatedBy: "-").first ?? "0")!)
+                  releaseYear: $0.releaseDate.components(separatedBy: "-").first ?? "0",
+                  imagePath: $0.posterPath)
         }
-    }
-    
-    func groupMoviesByYear(_ movies: [Movie]) -> [Int: [Movie]] {
-        var yearsToMovies: [Int: [Movie]] = [:]
-        for movie in movies {
-            if let _ = yearsToMovies[movie.releaseYear] {
-                yearsToMovies[movie.releaseYear]?.append(movie)
-            } else {
-                yearsToMovies[movie.releaseYear] = [movie]
-            }
-        }
-        return yearsToMovies
     }
 }

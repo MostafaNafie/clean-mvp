@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let popularMoviesUseCase = PopularMoviesUseCase(networkService: popularMoviesService)
         let presenter = MovieListPresenter(popularMoviesUseCase: popularMoviesUseCase)
         let dataSource = MovieListDataSource(presenter: presenter)
-        let rootVC = MovieListVC(presenter: presenter, dataSource: dataSource)
+        let delegate = MovieListDelegate(presenter: presenter)
+        let rootVC = MovieListVC(presenter: presenter, dataSource: dataSource, delegate: delegate)
         presenter.view = rootVC
         
         let rootNavigationController = UINavigationController(rootViewController: rootVC)

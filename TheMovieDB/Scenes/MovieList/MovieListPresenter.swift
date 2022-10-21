@@ -13,8 +13,9 @@ final class MovieListPresenter {
     
     // MARK: - Private Properties
     private let popularMoviesUseCase: PopularMoviesUseCase!
-    private var years: [Int] =  []
-    private var yearsToMovies: [Int: [Movie]] =  [:]
+    private var popularMovies: [Movie] =  []
+    private var totalPages = 0
+    private var currentPage = 1
     
     // MARK: - Init
     init(popularMoviesUseCase: PopularMoviesUseCase) {
@@ -22,13 +23,13 @@ final class MovieListPresenter {
     }
     
     // MARK: - Public Methods
-    func fetchMovies() {
-        popularMoviesUseCase.fetchMovies(page: 1) { [weak self] result in
+    func fetchMovies(at page: Int = 1) {
+        popularMoviesUseCase.fetchMovies(page: page) { [weak self] result in
             guard let self = self else { return }
             switch result {
-                case .success(let yearsToMovies):
-                    self.years = Array(yearsToMovies.keys)
-                    self.yearsToMovies = yearsToMovies
+                case .success(let response):
+                    self.totalPages = response.totalPages
+                    self.popularMovies += response.movies
                     self.view.showMovies()
                 case .failure(let error):
                     print(#function, error)
@@ -36,21 +37,23 @@ final class MovieListPresenter {
         }
     }
     
-    func yearsCount() -> Int {
-        yearsToMovies.count
+    func popularMoviesCount() -> Int {
+        popularMovies.count
     }
     
-    func year(at section: Int) -> String {
-        String(years[section])
+    func popularMovie(at row: Int) -> Movie {
+        popularMovies[row]
     }
     
-    func popularMoviesCount(at section: Int) -> Int {
-        let year = years[section]
-        return yearsToMovies[year]!.count
-    }
-    
-    func popularMovie(at section: Int, and row: Int) -> Movie {
-        let year = years[section]
-        return yearsToMovies[year]![row]
+    /// Check if the last movie is about to be displayed to handle pagination
+    /// - Parameter indexPath: The indexPath of the cell that is about to be displayed
+    func reachedMovie(at row: Int) {
+        // check that this is the last item
+        let lastFetchedRow = popularMoviesCount() - 1
+        guard lastFetchedRow == row else { return }
+        // check that currentPage is less that the totalPages
+        guard currentPage < totalPages else { return }
+        currentPage += 1
+        fetchMovies(at: currentPage)
     }
 }
