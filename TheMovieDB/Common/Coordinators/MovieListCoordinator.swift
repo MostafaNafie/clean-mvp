@@ -12,14 +12,16 @@ protocol MovieListCoordinating: AnyObject {
 }
 
 final class MovieListCoordinator: Coordinator {
-    unowned let navigationController: UINavigationController
+    private unowned let navigationController: UINavigationController
+    private let factory: Factory
     
-    required init(navigationController: UINavigationController) {
+    required init(factory: Factory, navigationController: UINavigationController) {
+        self.factory = factory
         self.navigationController = navigationController
     }
     
     func start() {
-        let firstViewController = makeMovieListVC(self)
+        let firstViewController = factory.makeMovieListVC(self)
         self.navigationController.viewControllers = [firstViewController]
     }
 }
