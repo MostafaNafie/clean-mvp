@@ -12,7 +12,11 @@ struct URLSessionClient: HTTPClient {
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             print("🌐 Request >>>", urlRequest.url!.absoluteString)
             let result: Result<T, Error>
-            defer { completion(result) }
+            defer {
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            }
             
             if let error = error {
                 result = .failure(error)
