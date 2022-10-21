@@ -12,15 +12,31 @@ final class MovieDetailsPresenter {
     weak var view: MovieDetailsView!
     
     // MARK: - Private Properties
-    private let popularMoviesUseCase: PopularMoviesUseCase
+    private let id: Int
+    private let movieDetailsUseCase: MovieDetailsUseCase
     
     // MARK: - Init
-    init(popularMoviesUseCase: PopularMoviesUseCase) {
-        self.popularMoviesUseCase = popularMoviesUseCase
+    init(id: Int, movieDetailsUseCase: MovieDetailsUseCase) {
+        self.id = id
+        self.movieDetailsUseCase = movieDetailsUseCase
     }
     
     // MARK: - Public Methods
     func fetchMoviesDetails() {
-        view.showMovieDetails()
+        movieDetailsUseCase.fetchMovieDetails(by: id) { [weak self] result in
+            self?.handleMovieResult(result)
+        }
+    }
+}
+
+// MARK: - Private Helpers
+private extension MovieDetailsPresenter {
+    func handleMovieResult(_ result: Result<MovieDetails, Error>) {
+        switch result {
+            case .success(let movieDetails):
+                view.show(movieDetails)
+            case .failure(let error):
+                print(#function, error)
+        }
     }
 }

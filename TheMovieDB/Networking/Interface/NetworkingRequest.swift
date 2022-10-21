@@ -23,8 +23,12 @@ extension NetworkingRequest {
     
     func buildURLRequest() -> URLRequest {
         var urlComponents = URLComponents(string: NetworkingConstants.baseURL)!
-        urlComponents.queryItems = queryItems
-        urlComponents.queryItems?.append(URLQueryItem(name: "api_key", value: NetworkingConstants.apiKey))
+        urlComponents.queryItems = [
+            URLQueryItem(name: "api_key", value: NetworkingConstants.apiKey)
+        ]
+        if let queryItems = queryItems {
+            urlComponents.queryItems?.append(contentsOf: queryItems)
+        }
         let baseURL = urlComponents.url!
         let pathURL = baseURL.appendingPathComponent(path)
         var urlRequest = URLRequest(url: pathURL)

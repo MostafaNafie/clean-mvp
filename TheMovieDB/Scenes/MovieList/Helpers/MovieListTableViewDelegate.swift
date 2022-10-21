@@ -26,6 +26,6 @@ extension MovieListTableViewDelegate: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.didSelectMovie()
+        presenter.didSelectMovie(at: indexPath.row)
     }
 }

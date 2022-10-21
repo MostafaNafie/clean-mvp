@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MovieDetailsView: AnyObject {
-    func showMovieDetails()
+    func show(_ movieDetails: MovieDetails)
 }
 
 final class MovieDetailsVC: UIViewController {
@@ -35,8 +35,8 @@ final class MovieDetailsVC: UIViewController {
 
 // MARK: - View Protocol
 extension MovieDetailsVC: MovieDetailsView {
-    func showMovieDetails() {
-        print(#function)
+    func show(_ movieDetails: MovieDetails) {
+        print(movieDetails)
     }
 }
 

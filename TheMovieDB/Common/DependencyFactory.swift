@@ -9,14 +9,14 @@ import Foundation
 
 protocol Factory {
     func makeMovieListVC(_ coordinator: MovieListCoordinating) -> MovieListVC
-    func makeMovieDetailsVC() -> MovieDetailsVC
+    func makeMovieDetailsVC(with id: Int) -> MovieDetailsVC
 }
 
 struct DependencyFactory: Factory {
     private let urlSessionClient = URLSessionClient()
-    private let moviesResponseMapper = MoviesResponseMapper()
     
     func makeMovieListVC(_ coordinator: MovieListCoordinating) -> MovieListVC {
+        let moviesResponseMapper = MoviesResponseMapper()
         
         let popularMoviesService = PopularMoviesService(client: urlSessionClient)
         let popularMoviesUseCase = PopularMoviesUseCase(networkService: popularMoviesService,
@@ -42,11 +42,13 @@ struct DependencyFactory: Factory {
         return movieListVC
     }
     
-    func makeMovieDetailsVC() -> MovieDetailsVC {
-        let movieDetailsService = PopularMoviesService(client: urlSessionClient)
-        let movieDetailsUseCase = PopularMoviesUseCase(networkService: movieDetailsService,
-                                                       moviesResponseMapper: moviesResponseMapper)
-        let presenter = MovieDetailsPresenter(popularMoviesUseCase: movieDetailsUseCase)
+    func makeMovieDetailsVC(with id: Int) -> MovieDetailsVC {
+        let movieResponseMapper = MovieResponseMapper()
+        let movieDetailsService = MovieDetailsService(client: urlSessionClient)
+        let movieDetailsUseCase = MovieDetailsUseCase(networkService: movieDetailsService,
+                                                      movieResponseMapper: movieResponseMapper)
+        let presenter = MovieDetailsPresenter(id: id,
+                                              movieDetailsUseCase: movieDetailsUseCase)
         
         let movieDetailsVC = MovieDetailsVC(presenter: presenter)
         presenter.view = movieDetailsVC

@@ -13,4 +13,5 @@ enum NetworkingConstants {
     static let apiKey = "360fea79b52f0de605753ec67513d039"
     static let popularMovies = "/movie/popular"
     static let searchMovies = "/search/movie"
+    static let movieDetails = "/movie"
 }

@@ -21,7 +21,7 @@ final class MovieListPresenter {
     private let searchMoviesUseCase: SearchMoviesUseCase
     private let coordinator: MovieListCoordinating
     private var currentState: MovieListPresenterState = .popularMovies
-    private var popularMovies: [Movie] =  []
+    private var movies: [Movie] =  []
     private var currentPage = 1
     private var totalPages = 1
     private var query = ""
@@ -43,11 +43,11 @@ final class MovieListPresenter {
     }
     
     func popularMoviesCount() -> Int {
-        popularMovies.count
+        movies.count
     }
     
     func popularMovie(at row: Int) -> Movie {
-        popularMovies[row]
+        movies[row]
     }
     
     /// Check if the last movie is about to be displayed to handle pagination
@@ -83,8 +83,9 @@ final class MovieListPresenter {
         }
     }
     
-    func didSelectMovie() {
-        coordinator.navigateToMovieDetails()
+    func didSelectMovie(at row: Int) {
+        let id = movies[row].id
+        coordinator.navigateToMovieDetails(with: id)
     }
 }
 
@@ -94,7 +95,7 @@ private extension MovieListPresenter {
         switch result {
             case .success(let response):
                 totalPages = response.totalPages
-                popularMovies += response.movies
+                movies += response.movies
                 view.showMovies()
             case .failure(let error):
                 print(#function, error)
@@ -104,7 +105,7 @@ private extension MovieListPresenter {
     func switchToPopularMoviesState() {
         query = ""
         currentPage = 1
-        popularMovies = []
+        movies = []
         fetchPopularMovies()
         currentState = .popularMovies
     }
@@ -112,7 +113,7 @@ private extension MovieListPresenter {
     func switchToSearchMoviesState(_ query: String) {
         self.query = query
         currentPage = 1
-        popularMovies = []
+        movies = []
         currentState = .searchMovies
     }
 }
