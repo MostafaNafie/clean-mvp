@@ -70,7 +70,7 @@ final class MovieListPresenter {
             return
         }
         
-        if currentState == .popularMovies {
+        if currentState == .popularMovies || query != self.query {
             switchToSearchMoviesState(query)
         }
         
@@ -85,9 +85,9 @@ private extension MovieListPresenter {
     func handleMoviesResult(_ result: Result<(totalPages: Int, movies: [Movie]), Error>) {
         switch result {
             case .success(let response):
-                self.totalPages = response.totalPages
-                self.popularMovies += response.movies
-                self.view.showMovies()
+                totalPages = response.totalPages
+                popularMovies += response.movies
+                view.showMovies()
             case .failure(let error):
                 print(#function, error)
         }

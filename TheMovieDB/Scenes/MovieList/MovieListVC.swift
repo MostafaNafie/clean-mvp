@@ -20,6 +20,7 @@ final class MovieListVC: UIViewController {
     private let presenter: MovieListPresenter!
     private let dataSource: MovieListDataSource!
     private let delegate: MovieListDelegate!
+    private let debouncer = Debouncer(delay: 0.3)
     
     init(presenter: MovieListPresenter, dataSource: MovieListDataSource, delegate: MovieListDelegate) {
         self.presenter = presenter
@@ -53,14 +54,24 @@ extension MovieListVC: UISearchBarDelegate {
         presenter.search(with: searchBar.text ?? "")
         searchBar.resignFirstResponder()
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        debouncer.run { [weak self] in
+            self?.presenter.search(with: searchBar.text ?? "")
+            if searchText.isEmpty {
+                searchBar.resignFirstResponder()
+            }
+        }
+        
+    }
 }
 
 // MARK: - Private helpers
 private extension MovieListVC {
     func setupUI() {
-        setupTableView()
         title = "Movie List"
-        searchBar.delegate = self
+        setupSearchBar()
+        setupTableView()
     }
     
     func setupTableView() {
@@ -69,4 +80,10 @@ private extension MovieListVC {
         tableView.delegate = delegate
         tableView.dataSource = dataSource
     }
+    
+    func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.placeholder = "Search Movies by Name"
+    }
 }
+
