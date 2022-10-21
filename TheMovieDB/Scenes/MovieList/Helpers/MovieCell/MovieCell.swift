@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieCell: UITableViewCell {
     // MARK: - Outlets
@@ -13,9 +14,17 @@ class MovieCell: UITableViewCell {
     @IBOutlet private weak var overviewLabel: UILabel!
     @IBOutlet private weak var posterImageView: UIImageView!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        posterImageView.image = nil
+    }
+    
     // MARK: - Public Methods
     func configure(with movie: Movie) {
         titleLabel.text = movie.title
         overviewLabel.text = movie.overview
+        posterImageView.kf.setImage(with: movie.posterURL,
+                                    placeholder: UIImage(named: "poster-placeholder"))
     }
 }

@@ -11,5 +11,5 @@ struct Movie {
     let title: String
     let overview: String
     let releaseYear: String
-    let imagePath: String
+    let posterURL: URL
 }
