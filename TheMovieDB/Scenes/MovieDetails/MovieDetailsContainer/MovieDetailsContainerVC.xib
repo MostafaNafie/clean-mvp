@@ -24,11 +24,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9T1-st-fV6">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="790"/>
+                            <rect key="frame" x="0.0" y="-40" width="414" height="790"/>
                             <subviews>
                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="350" translatesAutoresizingMaskIntoConstraints="NO" id="2AC-hM-d8d">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
-                                    <color key="backgroundColor" red="0.9549005880181819" green="0.9549005880181819" blue="0.9549005880181819" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 </view>
                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="200" translatesAutoresizingMaskIntoConstraints="NO" id="IGI-s4-jab">
                                     <rect key="frame" x="0.0" y="370" width="414" height="200"/>
@@ -44,7 +44,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="9T1-st-fV6" firstAttribute="width" secondItem="ii4-ka-RVY" secondAttribute="width" id="Gg4-UG-dNt"/>
-                        <constraint firstItem="9T1-st-fV6" firstAttribute="top" secondItem="Oax-dR-iij" secondAttribute="top" id="HuP-t7-6yK"/>
+                        <constraint firstItem="9T1-st-fV6" firstAttribute="top" secondItem="Oax-dR-iij" secondAttribute="top" constant="-40" id="HuP-t7-6yK"/>
                         <constraint firstItem="9T1-st-fV6" firstAttribute="leading" secondItem="Oax-dR-iij" secondAttribute="leading" id="Sex-gz-zCH"/>
                         <constraint firstItem="9T1-st-fV6" firstAttribute="trailing" secondItem="Oax-dR-iij" secondAttribute="trailing" id="bcL-s7-vur"/>
                         <constraint firstItem="9T1-st-fV6" firstAttribute="bottom" secondItem="Oax-dR-iij" secondAttribute="bottom" id="zuu-8K-2nI"/>
@@ -67,6 +67,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -12,6 +12,10 @@ protocol MovieDetailsView: AnyObject {
 }
 
 final class MovieDetailsVC: UIViewController {
+    // MARK: - Outlets
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var overViewLabel: UILabel!
+    @IBOutlet weak var releaseDateLabel: UILabel!
     
     // MARK: - Properties
     private let presenter: MovieDetailsPresenter
@@ -27,8 +31,6 @@ final class MovieDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupUI()
         presenter.fetchMoviesDetails()
     }
 }
@@ -36,13 +38,12 @@ final class MovieDetailsVC: UIViewController {
 // MARK: - View Protocol
 extension MovieDetailsVC: MovieDetailsView {
     func show(_ movieDetails: MovieDetails) {
-        print(movieDetails)
+        titleLabel.text = movieDetails.title
+        overViewLabel.text = movieDetails.overview
+        releaseDateLabel.text = movieDetails.releaseDate
     }
 }
 
 // MARK: - Private helpers
 private extension MovieDetailsVC {
-    func setupUI() {
-        title = "Movie Details"
-    }
 }
