@@ -1,23 +1,23 @@
 //
-//  PopularMoviesUseCase.swift
+//  SearchMoviesUseCase.swift
 //  TheMovieDB
 //
-//  Created by Mostafa Nafie on 20/10/2022.
+//  Created by Mostafa Nafie on 21/10/2022.
 //
 
 import Foundation
 
-struct PopularMoviesUseCase {
-    private let networkService: PopularMoviesServicing
+struct SearchMoviesUseCase {
+    private let networkService: SearchMoviesServicing
     private let moviesResponseMapper: MoviesResponseMapper
     
-    init(networkService: PopularMoviesServicing, moviesResponseMapper: MoviesResponseMapper) {
+    init(networkService: SearchMoviesServicing, moviesResponseMapper: MoviesResponseMapper) {
         self.networkService = networkService
         self.moviesResponseMapper = moviesResponseMapper
     }
     
-    func fetchMovies(at page: Int, completion: @escaping (Result<(totalPages: Int, movies: [Movie]), Error>) -> ()) {
-        networkService.fetchPopularMovies(at: page) { result in
+    func fetchMovies(by query: String, at page: Int, completion: @escaping (Result<(totalPages: Int, movies: [Movie]), Error>) -> ()) {
+        networkService.fetchMovies(by: query, at: page) { result in
             var response: Result<(totalPages: Int, movies: [Movie]), Error>!
             defer { completion(response) }
             switch result {

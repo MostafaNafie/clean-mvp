@@ -24,19 +24,19 @@ class MovieListPresenterTests: XCTestCase {
     }
 
     func test_shows_fetched_movies() {
-        sut.fetchMovies()
+        sut.fetchPopularMovies()
         
         XCTAssertEqual(spyMovieListView.showMoviesCount, 1)
     }
     
     func test_returns_correct_fetched_movies_count() {
-        sut.fetchMovies()
+        sut.fetchPopularMovies()
         
         XCTAssertEqual(sut.popularMoviesCount(), 20)
     }
     
     func test_returns_correct_fetched_movies_mapping() {
-        sut.fetchMovies()
+        sut.fetchPopularMovies()
         
         XCTAssertEqual(sut.popularMovie(at: 0).title, "Halloween Ends")
     }
