@@ -1,5 +1,5 @@
 //
-//  MovieListDataSource.swift
+//  MovieListTableViewDataSource.swift
 //  TheMovieDB
 //
 //  Created by Mostafa Nafie on 21/10/2022.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-final class MovieListDataSource: NSObject {
+final class MovieListTableViewDataSource: NSObject {
     // MARK: - Properties
-    private let presenter: MovieListPresenter!
+    private let presenter: MovieListPresenter
     
     init(presenter: MovieListPresenter) {
         self.presenter = presenter
     }
 }
 
-extension MovieListDataSource: UITableViewDataSource {
+extension MovieListTableViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.popularMoviesCount()
     }

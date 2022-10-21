@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MoviesSearchBarDelegate: NSObject {
+final class MovieListSearchBarDelegate: NSObject {
     // MARK: - Properties
     private let presenter: MovieListPresenter
     private let debouncer = Debouncer(delay: 0.3)
@@ -17,7 +17,7 @@ final class MoviesSearchBarDelegate: NSObject {
     }
 }
 
-extension MoviesSearchBarDelegate: UISearchBarDelegate {
+extension MovieListSearchBarDelegate: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         presenter.search(with: searchBar.text ?? "")
         searchBar.resignFirstResponder()

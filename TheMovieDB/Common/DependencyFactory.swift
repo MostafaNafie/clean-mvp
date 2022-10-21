@@ -27,9 +27,9 @@ struct DependencyFactory: Factory {
         let presenter = MovieListPresenter(popularMoviesUseCase: popularMoviesUseCase,
                                            searchMoviesUseCase: searchMoviesUseCase,
                                            coordinator: coordinator)
-        let tableViewDataSource = MovieListDataSource(presenter: presenter)
-        let tableViewDelegate = MovieListDelegate(presenter: presenter)
-        let searchBarDelegate = MoviesSearchBarDelegate(presenter: presenter)
+        let tableViewDataSource = MovieListTableViewDataSource(presenter: presenter)
+        let tableViewDelegate = MovieListTableViewDelegate(presenter: presenter)
+        let searchBarDelegate = MovieListSearchBarDelegate(presenter: presenter)
         
         let rootVC = MovieListVC(presenter: presenter,
                                  tableViewDataSource: tableViewDataSource,
