@@ -17,15 +17,19 @@ final class MovieListVC: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     
     // MARK: - Properties
-    private let presenter: MovieListPresenter!
-    private let dataSource: MovieListDataSource!
-    private let delegate: MovieListDelegate!
-    private let debouncer = Debouncer(delay: 0.3)
+    private let presenter: MovieListPresenter
+    private let tableViewDataSource: UITableViewDataSource
+    private let tableViewDelegate: UITableViewDelegate
+    private let searchBarDelegate: UISearchBarDelegate
     
-    init(presenter: MovieListPresenter, dataSource: MovieListDataSource, delegate: MovieListDelegate) {
+    init(presenter: MovieListPresenter,
+         tableViewDataSource: UITableViewDataSource,
+         tableViewDelegate: UITableViewDelegate,
+         searchBarDelegate: UISearchBarDelegate) {
         self.presenter = presenter
-        self.dataSource = dataSource
-        self.delegate = delegate
+        self.tableViewDataSource = tableViewDataSource
+        self.tableViewDelegate = tableViewDelegate
+        self.searchBarDelegate = searchBarDelegate
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -48,24 +52,6 @@ extension MovieListVC: MovieListView {
     }
 }
 
-// MARK: - View Protocol
-extension MovieListVC: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        presenter.search(with: searchBar.text ?? "")
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        debouncer.run { [weak self] in
-            self?.presenter.search(with: searchBar.text ?? "")
-            if searchText.isEmpty {
-                searchBar.resignFirstResponder()
-            }
-        }
-        
-    }
-}
-
 // MARK: - Private helpers
 private extension MovieListVC {
     func setupUI() {
@@ -77,13 +63,12 @@ private extension MovieListVC {
     func setupTableView() {
         tableView.register(cellType: MovieCell.self)
         tableView.keyboardDismissMode = .onDrag
-        tableView.delegate = delegate
-        tableView.dataSource = dataSource
+        tableView.delegate = tableViewDelegate
+        tableView.dataSource = tableViewDataSource
     }
     
     func setupSearchBar() {
-        searchBar.delegate = self
+        searchBar.delegate = searchBarDelegate
         searchBar.placeholder = "Search Movies by Name"
     }
 }
-

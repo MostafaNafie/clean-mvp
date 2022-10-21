@@ -27,10 +27,14 @@ struct DependencyFactory: Factory {
         let presenter = MovieListPresenter(popularMoviesUseCase: popularMoviesUseCase,
                                            searchMoviesUseCase: searchMoviesUseCase,
                                            coordinator: coordinator)
-        let dataSource = MovieListDataSource(presenter: presenter)
-        let delegate = MovieListDelegate(presenter: presenter)
+        let tableViewDataSource = MovieListDataSource(presenter: presenter)
+        let tableViewDelegate = MovieListDelegate(presenter: presenter)
+        let searchBarDelegate = MoviesSearchBarDelegate(presenter: presenter)
         
-        let rootVC = MovieListVC(presenter: presenter, dataSource: dataSource, delegate: delegate)
+        let rootVC = MovieListVC(presenter: presenter,
+                                 tableViewDataSource: tableViewDataSource,
+                                 tableViewDelegate: tableViewDelegate,
+                                 searchBarDelegate: searchBarDelegate)
         presenter.view = rootVC
         
         return rootVC
