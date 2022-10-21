@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieListDataSource: NSObject {
+final class MovieListDataSource: NSObject {
     // MARK: - Properties
     private let presenter: MovieListPresenter!
     

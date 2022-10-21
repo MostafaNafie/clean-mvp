@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieListDelegate: NSObject {
+final class MovieListDelegate: NSObject {
     // MARK: - Properties
     private let presenter: MovieListPresenter!
     

@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class MovieCell: UITableViewCell {
+final class MovieCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var overviewLabel: UILabel!
