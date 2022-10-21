@@ -10,4 +10,5 @@ import Foundation
 struct Movie {
     let title: String
     let overview: String
+    let releaseYear: Int
 }

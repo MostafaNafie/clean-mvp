@@ -50,12 +50,12 @@ extension MovieListVC: UITableViewDelegate {
 
 // MARK: - Private helpers
 private extension MovieListVC {
-    private func setupUI() {
+    func setupUI() {
         title = "Movie List"
         setupTableView()
     }
     
-    private func setupTableView() {
+    func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = dataSource
     }

@@ -18,13 +18,21 @@ class MovieListDataSource: NSObject {
 }
 
 extension MovieListDataSource: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        presenter.yearsCount()
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        presenter.year(at: section)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.popularMoviesCount()
+        presenter.popularMoviesCount(at: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = presenter.popularMovie(at: indexPath.row).title
+        cell.textLabel?.text = presenter.popularMovie(at: indexPath.section, and: indexPath.row).title
         return cell
     }
 }

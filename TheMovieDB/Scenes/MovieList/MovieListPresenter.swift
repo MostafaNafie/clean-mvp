@@ -13,7 +13,8 @@ final class MovieListPresenter {
     
     // MARK: - Private Properties
     private let popularMoviesUseCase: PopularMoviesUseCase!
-    private var popularMovies: [Movie] =  []
+    private var years: [Int] =  []
+    private var yearsToMovies: [Int: [Movie]] =  [:]
     
     // MARK: - Init
     init(popularMoviesUseCase: PopularMoviesUseCase) {
@@ -25,8 +26,9 @@ final class MovieListPresenter {
         popularMoviesUseCase.fetchMovies(page: 1) { [weak self] result in
             guard let self = self else { return }
             switch result {
-                case .success(let movies):
-                    self.popularMovies = movies
+                case .success(let yearsToMovies):
+                    self.years = Array(yearsToMovies.keys)
+                    self.yearsToMovies = yearsToMovies
                     self.view.showMovies()
                 case .failure(let error):
                     print(#function, error)
@@ -34,11 +36,21 @@ final class MovieListPresenter {
         }
     }
     
-    func popularMoviesCount() -> Int {
-        popularMovies.count
+    func yearsCount() -> Int {
+        yearsToMovies.count
     }
     
-    func popularMovie(at row: Int) -> Movie {
-        popularMovies[row]
+    func year(at section: Int) -> String {
+        String(years[section])
+    }
+    
+    func popularMoviesCount(at section: Int) -> Int {
+        let year = years[section]
+        return yearsToMovies[year]!.count
+    }
+    
+    func popularMovie(at section: Int, and row: Int) -> Movie {
+        let year = years[section]
+        return yearsToMovies[year]![row]
     }
 }
