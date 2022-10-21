@@ -1,0 +1,23 @@
+//
+//  MovieListDelegate.swift
+//  TheMovieDB
+//
+//  Created by Mostafa Nafie on 21/10/2022.
+//
+
+import UIKit
+
+class MovieListDelegate: NSObject {
+    // MARK: - Properties
+    private let presenter: MovieListPresenter!
+    
+    init(presenter: MovieListPresenter) {
+        self.presenter = presenter
+    }
+}
+
+extension MovieListDelegate: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        presenter.reachedMovie(at: indexPath.row)
+    }
+}

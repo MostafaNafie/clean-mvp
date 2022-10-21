@@ -54,6 +54,7 @@ private extension MovieListVC {
     }
     
     func setupTableView() {
+        tableView.register(cellType: MovieCell.self)
         tableView.delegate = delegate
         tableView.dataSource = dataSource
     }

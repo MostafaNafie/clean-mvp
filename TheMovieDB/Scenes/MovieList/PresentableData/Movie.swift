@@ -10,5 +10,6 @@ import Foundation
 struct Movie {
     let title: String
     let overview: String
-    let releaseYear: Int
+    let releaseYear: String
+    let imagePath: String
 }
