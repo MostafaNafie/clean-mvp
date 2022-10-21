@@ -28,7 +28,7 @@ final class MovieListCoordinator: Coordinator {
 
 extension MovieListCoordinator: MovieListCoordinating {
     func navigateToMovieDetails(with id: Int) {
-        let movieDetailsVC = factory.makeMovieDetailsVC(with: id)
-        navigationController.pushViewController(movieDetailsVC, animated: true)
+        let movieDetailsContainerVC = factory.makeMovieDetailsContainerVC(with: id)
+        navigationController.pushViewController(movieDetailsContainerVC, animated: true)
     }
 }

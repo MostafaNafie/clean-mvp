@@ -9,7 +9,7 @@ import Foundation
 
 protocol Factory {
     func makeMovieListVC(_ coordinator: MovieListCoordinating) -> MovieListVC
-    func makeMovieDetailsVC(with id: Int) -> MovieDetailsVC
+    func makeMovieDetailsContainerVC(with id: Int) -> MovieDetailsContainerVC
 }
 
 struct DependencyFactory: Factory {
@@ -42,6 +42,13 @@ struct DependencyFactory: Factory {
         return movieListVC
     }
     
+    func makeMovieDetailsContainerVC(with id: Int) -> MovieDetailsContainerVC {
+        let movieDetailsVC = makeMovieDetailsVC(with: id)
+        return MovieDetailsContainerVC(movieDetailsVC: movieDetailsVC)
+    }
+}
+
+private extension DependencyFactory {
     func makeMovieDetailsVC(with id: Int) -> MovieDetailsVC {
         let movieResponseMapper = MovieResponseMapper()
         let movieDetailsService = MovieDetailsService(client: urlSessionClient)
