@@ -9,6 +9,7 @@ import Foundation
 
 protocol Factory {
     func makeMovieListVC(_ coordinator: MovieListCoordinating) -> MovieListVC
+    func makeMovieDetailsVC() -> MovieDetailsVC
 }
 
 struct DependencyFactory: Factory {
@@ -31,12 +32,16 @@ struct DependencyFactory: Factory {
         let tableViewDelegate = MovieListTableViewDelegate(presenter: presenter)
         let searchBarDelegate = MovieListSearchBarDelegate(presenter: presenter)
         
-        let rootVC = MovieListVC(presenter: presenter,
-                                 tableViewDataSource: tableViewDataSource,
-                                 tableViewDelegate: tableViewDelegate,
-                                 searchBarDelegate: searchBarDelegate)
-        presenter.view = rootVC
+        let movieListVC = MovieListVC(presenter: presenter,
+                                      tableViewDataSource: tableViewDataSource,
+                                      tableViewDelegate: tableViewDelegate,
+                                      searchBarDelegate: searchBarDelegate)
+        presenter.view = movieListVC
         
-        return rootVC
+        return movieListVC
+    }
+    
+    func makeMovieDetailsVC() -> MovieDetailsVC {
+        return MovieDetailsVC()
     }
 }

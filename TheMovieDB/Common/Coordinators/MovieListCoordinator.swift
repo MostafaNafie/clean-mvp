@@ -21,16 +21,14 @@ final class MovieListCoordinator: Coordinator {
     }
     
     func start() {
-        let firstViewController = factory.makeMovieListVC(self)
-        self.navigationController.viewControllers = [firstViewController]
+        let movieListVC = factory.makeMovieListVC(self)
+        navigationController.viewControllers = [movieListVC]
     }
 }
 
 extension MovieListCoordinator: MovieListCoordinating {
     func navigateToMovieDetails() {
-        let vc = UIViewController()
-        vc.title = "Movie Title"
-        vc.view.backgroundColor = .white
-        navigationController.pushViewController(vc, animated: true)
+        let movieDetailsVC = factory.makeMovieDetailsVC()
+        navigationController.pushViewController(movieDetailsVC, animated: true)
     }
 }
