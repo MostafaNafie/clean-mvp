@@ -14,6 +14,7 @@ protocol MovieListView: AnyObject {
 final class MovieListVC: UIViewController {
     // MARK: - Outlets
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
     
     // MARK: - Properties
     private let presenter: MovieListPresenter!
@@ -34,8 +35,8 @@ final class MovieListVC: UIViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.fetchMovies()
         setupUI()
+        presenter.fetchPopularMovies()
     }
 }
 
@@ -46,15 +47,25 @@ extension MovieListVC: MovieListView {
     }
 }
 
+// MARK: - View Protocol
+extension MovieListVC: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        presenter.search(with: searchBar.text ?? "")
+        searchBar.resignFirstResponder()
+    }
+}
+
 // MARK: - Private helpers
 private extension MovieListVC {
     func setupUI() {
-        title = "Movie List"
         setupTableView()
+        title = "Movie List"
+        searchBar.delegate = self
     }
     
     func setupTableView() {
         tableView.register(cellType: MovieCell.self)
+        tableView.keyboardDismissMode = .onDrag
         tableView.delegate = delegate
         tableView.dataSource = dataSource
     }

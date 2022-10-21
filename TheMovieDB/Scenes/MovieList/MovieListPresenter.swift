@@ -8,32 +8,33 @@
 import Foundation
 
 final class MovieListPresenter {
+    enum MovieListPresenterState {
+        case popularMovies
+        case searchMovies
+    }
+    
     // MARK: - Poperties
     weak var view: MovieListView!
     
     // MARK: - Private Properties
     private let popularMoviesUseCase: PopularMoviesUseCase!
+    private let searchMoviesUseCase: SearchMoviesUseCase!
+    private var currentState: MovieListPresenterState = .popularMovies
     private var popularMovies: [Movie] =  []
-    private var totalPages = 0
     private var currentPage = 1
+    private var totalPages = 1
+    private var query = ""
     
     // MARK: - Init
-    init(popularMoviesUseCase: PopularMoviesUseCase) {
+    init(popularMoviesUseCase: PopularMoviesUseCase, searchMoviesUseCase: SearchMoviesUseCase) {
         self.popularMoviesUseCase = popularMoviesUseCase
+        self.searchMoviesUseCase = searchMoviesUseCase
     }
     
     // MARK: - Public Methods
-    func fetchMovies(at page: Int = 1) {
-        popularMoviesUseCase.fetchMovies(page: page) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-                case .success(let response):
-                    self.totalPages = response.totalPages
-                    self.popularMovies += response.movies
-                    self.view.showMovies()
-                case .failure(let error):
-                    print(#function, error)
-            }
+    func fetchPopularMovies(at page: Int = 1) {
+        popularMoviesUseCase.fetchMovies(at: page) { [weak self] result in
+            self?.handleMoviesResult(result)
         }
     }
     
@@ -54,6 +55,56 @@ final class MovieListPresenter {
         // check that currentPage is less that the totalPages
         guard currentPage < totalPages else { return }
         currentPage += 1
-        fetchMovies(at: currentPage)
+        
+        switch currentState {
+            case .popularMovies:
+                fetchPopularMovies(at: currentPage)
+            case .searchMovies:
+                search(with: query, at: currentPage)
+        }
+    }
+    
+    func search(with query: String, at page: Int = 1) {
+        guard !query.isEmpty else {
+            switchToPopularMoviesState()
+            return
+        }
+        
+        if currentState == .popularMovies {
+            switchToSearchMoviesState(query)
+        }
+        
+        searchMoviesUseCase.fetchMovies(by: query, at: page) { [weak self] result in
+            self?.handleMoviesResult(result)
+        }
+    }
+}
+
+// MARK: - Private helpers
+private extension MovieListPresenter {
+    func handleMoviesResult(_ result: Result<(totalPages: Int, movies: [Movie]), Error>) {
+        switch result {
+            case .success(let response):
+                self.totalPages = response.totalPages
+                self.popularMovies += response.movies
+                self.view.showMovies()
+            case .failure(let error):
+                print(#function, error)
+        }
+    }
+    
+    func switchToPopularMoviesState() {
+        query = ""
+        currentPage = 1
+        popularMovies = []
+        fetchPopularMovies()
+        currentState = .popularMovies
+    }
+    
+    func switchToSearchMoviesState(_ query: String) {
+        self.query = query
+        currentPage = 1
+        popularMovies = []
+        currentState = .searchMovies
     }
 }

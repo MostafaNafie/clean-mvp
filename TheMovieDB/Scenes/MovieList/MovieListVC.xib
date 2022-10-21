@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieListVC" customModule="TheMovieDB" customModuleProvider="target">
             <connections>
+                <outlet property="searchBar" destination="YcS-KF-Rfw" id="oLq-yN-gjE"/>
                 <outlet property="tableView" destination="Cno-6h-9wd" id="QMP-Sh-guH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
