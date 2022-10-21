@@ -8,14 +8,20 @@
 import UIKit
 
 protocol MovieListView: AnyObject {
-    func showMovies(_ movies: [Movie])
+    func showMovies()
 }
 
 final class MovieListVC: UIViewController {
-    private let presenter: MovieListPresenter!
+    // MARK: - Outlets
+    @IBOutlet private weak var tableView: UITableView!
     
-    init(presenter: MovieListPresenter) {
+    // MARK: - Properties
+    private let presenter: MovieListPresenter!
+    private let dataSource: MovieListDataSource!
+    
+    init(presenter: MovieListPresenter, dataSource: MovieListDataSource) {
         self.presenter = presenter
+        self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -23,14 +29,34 @@ final class MovieListVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.fetchMovies()
+        setupUI()
     }
 }
 
+// MARK: - View Protocol
 extension MovieListVC: MovieListView {
-    func showMovies(_ movies: [Movie]) {
-        print(#function, movies)
+    func showMovies() {
+        tableView.reloadData()
+    }
+}
+
+// MARK: - TableView Delegate
+extension MovieListVC: UITableViewDelegate {
+}
+
+// MARK: - Private helpers
+private extension MovieListVC {
+    private func setupUI() {
+        title = "Movie List"
+        setupTableView()
+    }
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = dataSource
     }
 }

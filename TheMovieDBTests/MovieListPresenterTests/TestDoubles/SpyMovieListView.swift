@@ -10,10 +10,8 @@ import Foundation
 
 final class SpyMovieListView: MovieListView {
     var showMoviesCount = 0
-    var movies: [Movie] = []
     
-    func showMovies(_ movies: [Movie]) {
-        self.movies = movies
+    func showMovies() {
         showMoviesCount += 1
     }
 }

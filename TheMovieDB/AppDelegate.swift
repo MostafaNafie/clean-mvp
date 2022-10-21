@@ -15,11 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let popularMoviesService = PopularMoviesService(client: URLSessionClient())
         let popularMoviesUseCase = PopularMoviesUseCase(networkService: popularMoviesService)
         let presenter = MovieListPresenter(popularMoviesUseCase: popularMoviesUseCase)
-        let rootVC = MovieListVC(presenter: presenter)
-        
+        let dataSource = MovieListDataSource(presenter: presenter)
+        let rootVC = MovieListVC(presenter: presenter, dataSource: dataSource)
         presenter.view = rootVC
+        
+        let rootNavigationController = UINavigationController(rootViewController: rootVC)
+        rootNavigationController.navigationBar.prefersLargeTitles = true
+        
         window = UIWindow()
-        window?.rootViewController = rootVC
+        window?.rootViewController = rootNavigationController
         window?.makeKeyAndVisible()
         return true
     }

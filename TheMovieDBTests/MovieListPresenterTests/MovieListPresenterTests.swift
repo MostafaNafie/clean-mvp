@@ -32,12 +32,12 @@ class MovieListPresenterTests: XCTestCase {
     func test_returns_correct_fetched_movies_count() {
         sut.fetchMovies()
         
-        XCTAssertEqual(spyMovieListView.movies.count, 20)
+        XCTAssertEqual(sut.popularMoviesCount(), 20)
     }
     
     func test_returns_correct_fetched_movies_mapping() {
         sut.fetchMovies()
         
-        XCTAssertEqual(spyMovieListView.movies[0].title, "Halloween Ends")
+        XCTAssertEqual(sut.popularMovie(at: 0).title, "Halloween Ends")
     }
 }
