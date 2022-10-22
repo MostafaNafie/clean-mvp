@@ -8,6 +8,7 @@
 import UIKit
 
 protocol SimilarMoviesView: AnyObject {
+    func showMovies()
     func startLoading()
     func stopLoading()
     func showError(with title: String, and message: String)
@@ -16,8 +17,9 @@ protocol SimilarMoviesView: AnyObject {
 final class SimilarMoviesVC: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var overViewLabel: UILabel!
-    @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    private lazy var collectionViewDataSource = SimilarMoviesCollectionViewDataSource(presenter: presenter)
+    private lazy var collectionViewDelegate = SimilarMoviesCollectionViewDelegateFlowLayout(presenter: presenter)
     
     // MARK: - Properties
     private let presenter: SimilarMoviesPresenter
@@ -36,11 +38,16 @@ final class SimilarMoviesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.fetchMoviesDetails()
+        setupUI()
     }
 }
 
 // MARK: - View Protocol
 extension SimilarMoviesVC: SimilarMoviesView {
+    func showMovies() {
+        collectionView.reloadData()
+    }
+    
     func startLoading() {
         showLoader()
     }
@@ -56,4 +63,19 @@ extension SimilarMoviesVC: SimilarMoviesView {
 
 // MARK: - Private helpers
 private extension SimilarMoviesVC {
+    func setupUI() {
+        titleLabel.text = "Similar Movies"
+        setupCollectionView()
+    }
+    
+    func setupCollectionView() {
+        collectionView.register(cellType: SimilarMovieCell.self)
+        collectionView.dataSource = collectionViewDataSource
+        collectionView.delegate = collectionViewDelegate
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
+        if let flow = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+            flow.scrollDirection = .horizontal
+        }
+    }
 }

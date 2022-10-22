@@ -8,10 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsVC" customModule="TheMovieDB" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SimilarMoviesVC" customModule="TheMovieDB" customModuleProvider="target">
             <connections>
-                <outlet property="overViewLabel" destination="M4Z-zx-chm" id="L8W-iU-v9D"/>
-                <outlet property="releaseDateLabel" destination="SHz-6O-d7e" id="SMF-dU-Bng"/>
+                <outlet property="collectionView" destination="QST-Fu-ngS" id="uQE-mB-BW7"/>
                 <outlet property="titleLabel" destination="0Pa-QY-HII" id="Unn-Yq-LIj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,37 +20,41 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Pa-QY-HII">
+                    <rect key="frame" x="20" y="64" width="414" height="106"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VKc-Qa-l8h">
-                    <rect key="frame" x="20" y="64" width="374" height="416"/>
+                    <rect key="frame" x="0.0" y="180" width="414" height="300"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Pa-QY-HII">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHz-6O-d7e">
-                            <rect key="frame" x="0.0" y="10" width="374" height="50"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4Z-zx-chm">
-                            <rect key="frame" x="0.0" y="70" width="374" height="346"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="QST-Fu-ngS">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="300" id="mGS-WA-E2F"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cv0-MY-Re1">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
                     </subviews>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="0Pa-QY-HII" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="20" id="1xW-OY-8Qy"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VKc-Qa-l8h" secondAttribute="bottom" constant="20" id="D39-OJ-q8P"/>
-                <constraint firstItem="VKc-Qa-l8h" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Vkv-xI-Ern"/>
-                <constraint firstItem="VKc-Qa-l8h" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="b0g-OW-Stz"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VKc-Qa-l8h" secondAttribute="trailing" constant="20" id="or2-fJ-FGt"/>
+                <constraint firstItem="VKc-Qa-l8h" firstAttribute="top" secondItem="0Pa-QY-HII" secondAttribute="bottom" constant="10" id="DC0-kI-SF7"/>
+                <constraint firstItem="0Pa-QY-HII" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Tgp-LN-7ts"/>
+                <constraint firstItem="VKc-Qa-l8h" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Vkv-xI-Ern"/>
+                <constraint firstItem="0Pa-QY-HII" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="hkT-Ip-7B6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VKc-Qa-l8h" secondAttribute="trailing" id="or2-fJ-FGt"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-303" y="95"/>
