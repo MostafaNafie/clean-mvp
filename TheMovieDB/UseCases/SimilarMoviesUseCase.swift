@@ -22,8 +22,8 @@ struct SimilarMoviesUseCase {
             defer { completion(response) }
             switch result {
                 case .success(let moviesResponse):
-                    let movieDetails = moviesResponseMapper.mapResponseToMovies(moviesResponse)
-                    response = .success(movieDetails)
+                    let movies = moviesResponseMapper.mapResponseToMovies(moviesResponse)
+                    response = .success(Array(movies.prefix(5)))
                 case .failure(let error):
                     response = .failure(error)
             }

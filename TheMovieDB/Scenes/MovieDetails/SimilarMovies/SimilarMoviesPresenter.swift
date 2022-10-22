@@ -33,6 +33,10 @@ final class SimilarMoviesPresenter {
     func moviesCount() -> Int {
         movies.count
     }
+    
+    func movie(at row: Int) -> Movie {
+        movies[row]
+    }
 }
 
 // MARK: - Private Helpers
@@ -40,7 +44,7 @@ private extension SimilarMoviesPresenter {
     func handleMoviesResult(_ result: Result<[Movie], Error>) {
         switch result {
             case .success(let movies):
-                self.movies = Array(movies.prefix(5))
+                self.movies = movies
                 view.showMovies()
             case .failure(let error):
                 view.showError(with: "\(type(of: error))", and: error.localizedDescription)

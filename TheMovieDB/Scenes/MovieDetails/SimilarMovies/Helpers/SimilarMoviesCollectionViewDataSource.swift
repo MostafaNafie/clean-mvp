@@ -23,6 +23,8 @@ extension SimilarMoviesCollectionViewDataSource: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SimilarMovieCell = collectionView.dequeueReusableCell(for: indexPath)
+        let movie = presenter.movie(at: indexPath.row)
+        cell.configure(movie)
         return cell
     }
 }

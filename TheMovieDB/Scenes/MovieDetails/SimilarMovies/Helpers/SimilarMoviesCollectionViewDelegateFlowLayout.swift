@@ -18,7 +18,7 @@ final class SimilarMoviesCollectionViewDelegateFlowLayout: NSObject {
 
 extension SimilarMoviesCollectionViewDelegateFlowLayout: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: 200, height: 300)
+        SimilarMovieCell.size
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
