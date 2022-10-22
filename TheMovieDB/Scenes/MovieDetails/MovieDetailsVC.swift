@@ -9,6 +9,8 @@ import UIKit
 
 protocol MovieDetailsView: AnyObject {
     func show(_ movieDetails: MovieDetails)
+    func startLoading()
+    func stopLoading()
 }
 
 final class MovieDetailsVC: UIViewController {
@@ -20,6 +22,7 @@ final class MovieDetailsVC: UIViewController {
     // MARK: - Properties
     private let presenter: MovieDetailsPresenter
     
+    // MARK: - Init
     init(presenter: MovieDetailsPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -29,6 +32,7 @@ final class MovieDetailsVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.fetchMoviesDetails()
@@ -41,6 +45,14 @@ extension MovieDetailsVC: MovieDetailsView {
         titleLabel.text = movieDetails.title
         overViewLabel.text = movieDetails.overview
         releaseDateLabel.text = movieDetails.releaseDate
+    }
+    
+    func startLoading() {
+        showLoader()
+    }
+    
+    func stopLoading() {
+        hideLoader()
     }
 }
 

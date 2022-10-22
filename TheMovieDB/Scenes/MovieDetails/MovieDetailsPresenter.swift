@@ -23,6 +23,7 @@ final class MovieDetailsPresenter {
     
     // MARK: - Public Methods
     func fetchMoviesDetails() {
+        view.startLoading()
         movieDetailsUseCase.fetchMovieDetails(by: id) { [weak self] result in
             self?.handleMovieResult(result)
         }
@@ -38,5 +39,6 @@ private extension MovieDetailsPresenter {
             case .failure(let error):
                 print(#function, error)
         }
+        view.stopLoading()
     }
 }

@@ -37,6 +37,7 @@ final class MovieListPresenter {
     
     // MARK: - Public Methods
     func fetchPopularMovies(at page: Int = 1) {
+        view.startLoading()
         popularMoviesUseCase.fetchMovies(at: page) { [weak self] result in
             self?.handleMoviesResult(result)
         }
@@ -78,6 +79,7 @@ final class MovieListPresenter {
             switchToSearchMoviesState(query)
         }
         
+        view.startLoading()
         searchMoviesUseCase.fetchMovies(by: query, at: page) { [weak self] result in
             self?.handleMoviesResult(result)
         }
@@ -100,20 +102,25 @@ private extension MovieListPresenter {
             case .failure(let error):
                 print(#function, error)
         }
+        view.stopLoading()
     }
     
     func switchToPopularMoviesState() {
         query = ""
-        currentPage = 1
-        movies = []
+        resetMovies()
         fetchPopularMovies()
         currentState = .popularMovies
     }
     
     func switchToSearchMoviesState(_ query: String) {
         self.query = query
+        resetMovies()
+        currentState = .searchMovies
+    }
+    
+    func resetMovies() {
         currentPage = 1
         movies = []
-        currentState = .searchMovies
+        view.showMovies()
     }
 }

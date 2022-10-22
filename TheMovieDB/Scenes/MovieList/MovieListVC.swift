@@ -9,6 +9,8 @@ import UIKit
 
 protocol MovieListView: AnyObject {
     func showMovies()
+    func startLoading()
+    func stopLoading()
 }
 
 final class MovieListVC: UIViewController {
@@ -22,6 +24,7 @@ final class MovieListVC: UIViewController {
     private let tableViewDelegate: UITableViewDelegate
     private let searchBarDelegate: UISearchBarDelegate
     
+    // MARK: - Init
     init(presenter: MovieListPresenter,
          tableViewDataSource: UITableViewDataSource,
          tableViewDelegate: UITableViewDelegate,
@@ -49,6 +52,14 @@ final class MovieListVC: UIViewController {
 extension MovieListVC: MovieListView {
     func showMovies() {
         tableView.reloadData()
+    }
+    
+    func startLoading() {
+        showLoader()
+    }
+    
+    func stopLoading() {
+        hideLoader()
     }
 }
 
