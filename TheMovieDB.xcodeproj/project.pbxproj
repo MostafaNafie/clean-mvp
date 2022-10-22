@@ -180,6 +180,16 @@
 			path = MovieDetailsContainer;
 			sourceTree = "<group>";
 		};
+		A31F022A2903C74000F329D3 /* MovieDetails */ = {
+			isa = PBXGroup;
+			children = (
+				A3A7E1012902E6F7009AD2E5 /* MovieDetailsPresenter.swift */,
+				A3A7E0FD2902E490009AD2E5 /* MovieDetailsVC.swift */,
+				A3A7E0FE2902E490009AD2E5 /* MovieDetailsVC.xib */,
+			);
+			path = MovieDetails;
+			sourceTree = "<group>";
+		};
 		A36622A8290112F6006B9E4C = {
 			isa = PBXGroup;
 			children = (
@@ -414,9 +424,7 @@
 			children = (
 				A3A7E10E2902F3B8009AD2E5 /* PresentableData */,
 				A31F021B290334B900F329D3 /* MovieDetailsContainer */,
-				A3A7E1012902E6F7009AD2E5 /* MovieDetailsPresenter.swift */,
-				A3A7E0FD2902E490009AD2E5 /* MovieDetailsVC.swift */,
-				A3A7E0FE2902E490009AD2E5 /* MovieDetailsVC.xib */,
+				A31F022A2903C74000F329D3 /* MovieDetails */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
