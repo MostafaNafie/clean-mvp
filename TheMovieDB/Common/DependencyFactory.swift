@@ -14,9 +14,9 @@ protocol Factory {
 
 struct DependencyFactory: Factory {
     private let urlSessionClient = URLSessionClient()
+    private let moviesResponseMapper = MoviesResponseMapper()
     
     func makeMovieListVC(_ coordinator: MovieListCoordinating) -> MovieListVC {
-        let moviesResponseMapper = MoviesResponseMapper()
         
         let popularMoviesService = PopularMoviesService(client: urlSessionClient)
         let popularMoviesUseCase = PopularMoviesUseCase(networkService: popularMoviesService,
@@ -44,7 +44,9 @@ struct DependencyFactory: Factory {
     
     func makeMovieDetailsContainerVC(with id: Int) -> MovieDetailsContainerVC {
         let movieDetailsVC = makeMovieDetailsVC(with: id)
-        return MovieDetailsContainerVC(movieDetailsVC: movieDetailsVC)
+        let similarMoviesVC = makeSimilarMoviesVC(with: id)
+        return MovieDetailsContainerVC(movieDetailsVC: movieDetailsVC,
+                                       similarMoviesVC: similarMoviesVC)
     }
 }
 
@@ -61,5 +63,18 @@ private extension DependencyFactory {
         presenter.view = movieDetailsVC
         
         return movieDetailsVC
+    }
+    
+    func makeSimilarMoviesVC(with id: Int) -> SimilarMoviesVC {
+        let similarMoviesService = SimilarMoviesService(client: urlSessionClient)
+        let similarMoviesUseCase = SimilarMoviesUseCase(networkService: similarMoviesService,
+                                                        moviesResponseMapper: moviesResponseMapper)
+        let presenter = SimilarMoviesPresenter(id: id,
+                                               similarMoviesUseCase: similarMoviesUseCase)
+        
+        let similarMoviesVC = SimilarMoviesVC(presenter: presenter)
+        presenter.view = similarMoviesVC
+        
+        return similarMoviesVC
     }
 }

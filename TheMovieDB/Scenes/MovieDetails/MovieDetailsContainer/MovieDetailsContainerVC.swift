@@ -10,13 +10,16 @@ import UIKit
 final class MovieDetailsContainerVC: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak private var movieDetailsContainerView: UIView!
+    @IBOutlet weak private var similarMoviesContainerView: UIView!
     
     // MARK: - Properties
     private let movieDetailsVC: UIViewController
+    private let similarMoviesVC: UIViewController
     
     // MARK: - Init
-    init(movieDetailsVC: UIViewController) {
+    init(movieDetailsVC: UIViewController, similarMoviesVC: UIViewController) {
         self.movieDetailsVC = movieDetailsVC
+        self.similarMoviesVC = similarMoviesVC
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,5 +38,6 @@ final class MovieDetailsContainerVC: UIViewController {
 private extension MovieDetailsContainerVC {
     func setupSubViewContainers() {
         add(childVC: movieDetailsVC, to: movieDetailsContainerView)
+        add(childVC: similarMoviesVC, to: similarMoviesContainerView)
     }
 }

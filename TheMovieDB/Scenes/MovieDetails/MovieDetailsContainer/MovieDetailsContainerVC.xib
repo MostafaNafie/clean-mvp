@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsContainerVC" customModule="TheMovieDB" customModuleProvider="target">
             <connections>
                 <outlet property="movieDetailsContainerView" destination="2AC-hM-d8d" id="8Si-6q-T5C"/>
+                <outlet property="similarMoviesContainerView" destination="IGI-s4-jab" id="Ie8-F3-F2e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,11 +33,11 @@
                                 </view>
                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="200" translatesAutoresizingMaskIntoConstraints="NO" id="IGI-s4-jab">
                                     <rect key="frame" x="0.0" y="370" width="414" height="200"/>
-                                    <color key="backgroundColor" red="0.9549005880181819" green="0.9549005880181819" blue="0.9549005880181819" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 </view>
                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="200" translatesAutoresizingMaskIntoConstraints="NO" id="Vnu-Xc-gB4">
                                     <rect key="frame" x="0.0" y="590" width="414" height="200"/>
-                                    <color key="backgroundColor" red="0.9549005880181819" green="0.9549005880181819" blue="0.9549005880181819" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 </view>
                             </subviews>
                         </stackView>
