@@ -18,12 +18,12 @@ final class MovieListTableViewDataSource: NSObject {
 
 extension MovieListTableViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.popularMoviesCount()
+        presenter.moviesCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MovieCell = tableView.dequeueReusableCell(for: indexPath)
-        let movie = presenter.popularMovie(at: indexPath.row)
+        let movie = presenter.movie(at: indexPath.row)
         cell.configure(with: movie)
         return cell
     }

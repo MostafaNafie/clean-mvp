@@ -21,19 +21,13 @@ final class MovieListVC: UIViewController {
     
     // MARK: - Properties
     private let presenter: MovieListPresenter
-    private let tableViewDataSource: UITableViewDataSource
-    private let tableViewDelegate: UITableViewDelegate
-    private let searchBarDelegate: UISearchBarDelegate
+    private lazy var tableViewDataSource = MovieListTableViewDataSource(presenter: presenter)
+    private lazy var tableViewDelegate = MovieListTableViewDelegate(presenter: presenter)
+    private lazy var searchBarDelegate = MovieListSearchBarDelegate(presenter: presenter)
     
     // MARK: - Init
-    init(presenter: MovieListPresenter,
-         tableViewDataSource: UITableViewDataSource,
-         tableViewDelegate: UITableViewDelegate,
-         searchBarDelegate: UISearchBarDelegate) {
+    init(presenter: MovieListPresenter) {
         self.presenter = presenter
-        self.tableViewDataSource = tableViewDataSource
-        self.tableViewDelegate = tableViewDelegate
-        self.searchBarDelegate = searchBarDelegate
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -45,7 +39,7 @@ final class MovieListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        presenter.fetchPopularMovies()
+        presenter.fetchMovies()
     }
 }
 

@@ -36,18 +36,18 @@ final class MovieListPresenter {
     }
     
     // MARK: - Public Methods
-    func fetchPopularMovies(at page: Int = 1) {
+    func fetchMovies(at page: Int = 1) {
         view.startLoading()
         popularMoviesUseCase.fetchMovies(at: page) { [weak self] result in
             self?.handleMoviesResult(result)
         }
     }
     
-    func popularMoviesCount() -> Int {
+    func moviesCount() -> Int {
         movies.count
     }
     
-    func popularMovie(at row: Int) -> Movie {
+    func movie(at row: Int) -> Movie {
         movies[row]
     }
     
@@ -55,7 +55,7 @@ final class MovieListPresenter {
     /// - Parameter indexPath: The indexPath of the cell that is about to be displayed
     func reachedMovie(at row: Int) {
         // check that this is the last item
-        let lastFetchedRow = popularMoviesCount() - 1
+        let lastFetchedRow = moviesCount() - 1
         guard lastFetchedRow == row else { return }
         // check that currentPage is less that the totalPages
         guard currentPage < totalPages else { return }
@@ -63,7 +63,7 @@ final class MovieListPresenter {
         
         switch currentState {
             case .popularMovies:
-                fetchPopularMovies(at: currentPage)
+                fetchMovies(at: currentPage)
             case .searchMovies:
                 search(with: query, at: currentPage)
         }
@@ -108,7 +108,7 @@ private extension MovieListPresenter {
     func switchToPopularMoviesState() {
         query = ""
         resetMovies()
-        fetchPopularMovies()
+        fetchMovies()
         currentState = .popularMovies
     }
     

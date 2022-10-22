@@ -17,7 +17,6 @@ struct DependencyFactory: Factory {
     private let moviesResponseMapper = MoviesResponseMapper()
     
     func makeMovieListVC(_ coordinator: MovieListCoordinating) -> MovieListVC {
-        
         let popularMoviesService = PopularMoviesService(client: urlSessionClient)
         let popularMoviesUseCase = PopularMoviesUseCase(networkService: popularMoviesService,
                                                         moviesResponseMapper: moviesResponseMapper)
@@ -29,14 +28,8 @@ struct DependencyFactory: Factory {
         let presenter = MovieListPresenter(popularMoviesUseCase: popularMoviesUseCase,
                                            searchMoviesUseCase: searchMoviesUseCase,
                                            coordinator: coordinator)
-        let tableViewDataSource = MovieListTableViewDataSource(presenter: presenter)
-        let tableViewDelegate = MovieListTableViewDelegate(presenter: presenter)
-        let searchBarDelegate = MovieListSearchBarDelegate(presenter: presenter)
         
-        let movieListVC = MovieListVC(presenter: presenter,
-                                      tableViewDataSource: tableViewDataSource,
-                                      tableViewDelegate: tableViewDelegate,
-                                      searchBarDelegate: searchBarDelegate)
+        let movieListVC = MovieListVC(presenter: presenter)
         presenter.view = movieListVC
         
         return movieListVC

@@ -17,9 +17,14 @@ final class MovieCell: UITableViewCell {
     @IBOutlet private weak var overviewLabel: UILabel!
     @IBOutlet private weak var posterImageView: UIImageView!
     
+    // MARK: - Cell Lifecycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        posterImageView.kf.indicatorType = .activity
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
-        
         posterImageView.image = nil
     }
     
@@ -28,7 +33,10 @@ final class MovieCell: UITableViewCell {
         titleLabel.text = movie.title
         releaseYearLabel.text = movie.releaseYear
         overviewLabel.text = movie.overview
+        
+        let processor = RoundCornerImageProcessor(cornerRadius: 100)
         posterImageView.kf.setImage(with: movie.posterURL,
-                                    placeholder: UIImage(named: "poster-placeholder"))
+                                    placeholder: UIImage(named: "poster-placeholder"),
+                                    options: [.transition(.fade(0.3)), .processor(processor)])
     }
 }
