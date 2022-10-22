@@ -7,13 +7,14 @@
 
 import UIKit
 
-class MovieDetailsContainerVC: UIViewController {
+final class MovieDetailsContainerVC: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak private var movieDetailsContainerView: UIView!
     
     // MARK: - Properties
     private let movieDetailsVC: UIViewController
     
+    // MARK: - Init
     init(movieDetailsVC: UIViewController) {
         self.movieDetailsVC = movieDetailsVC
         super.init(nibName: nil, bundle: nil)
@@ -23,20 +24,15 @@ class MovieDetailsContainerVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupUI()
         setupSubViewContainers()
     }
 }
 
 // MARK: - Private Helpers
 private extension MovieDetailsContainerVC {
-    func setupUI() {
-//        title = "Movie Details"
-    }
-    
     func setupSubViewContainers() {
         add(childVC: movieDetailsVC, to: movieDetailsContainerView)
     }
