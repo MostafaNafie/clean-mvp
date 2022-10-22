@@ -11,6 +11,7 @@ protocol MovieDetailsView: AnyObject {
     func show(_ movieDetails: MovieDetails)
     func startLoading()
     func stopLoading()
+    func showError(with title: String, and message: String)
 }
 
 final class MovieDetailsVC: UIViewController {
@@ -53,6 +54,10 @@ extension MovieDetailsVC: MovieDetailsView {
     
     func stopLoading() {
         hideLoader()
+    }
+    
+    func showError(with title: String, and message: String) {
+        showAlert(with: title, and: message)
     }
 }
 

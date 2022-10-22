@@ -11,6 +11,7 @@ protocol MovieListView: AnyObject {
     func showMovies()
     func startLoading()
     func stopLoading()
+    func showError(with title: String, and message: String)
 }
 
 final class MovieListVC: UIViewController {
@@ -60,6 +61,10 @@ extension MovieListVC: MovieListView {
     
     func stopLoading() {
         hideLoader()
+    }
+    
+    func showError(with title: String, and message: String) {
+        showAlert(with: title, and: message)
     }
 }
 

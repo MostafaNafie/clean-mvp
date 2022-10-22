@@ -100,7 +100,7 @@ private extension MovieListPresenter {
                 movies += response.movies
                 view.showMovies()
             case .failure(let error):
-                print(#function, error)
+                view.showError(with: "\(type(of: error))", and: error.localizedDescription)
         }
         view.stopLoading()
     }

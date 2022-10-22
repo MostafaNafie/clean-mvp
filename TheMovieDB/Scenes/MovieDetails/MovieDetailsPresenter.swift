@@ -37,7 +37,7 @@ private extension MovieDetailsPresenter {
             case .success(let movieDetails):
                 view.show(movieDetails)
             case .failure(let error):
-                print(#function, error)
+                view.showError(with: "\(type(of: error))", and: error.localizedDescription)
         }
         view.stopLoading()
     }
