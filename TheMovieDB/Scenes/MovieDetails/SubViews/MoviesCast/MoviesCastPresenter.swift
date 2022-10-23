@@ -14,6 +14,7 @@ final class MoviesCastPresenter: BasePresenter<MoviesCastView> {
     // MARK: - Private Properties
     private let movieCastUseCase: MovieCastUseCase
     private var actors: [Cast] = []
+    private var directors: [Cast] = []
     
     // MARK: - Init
     init(movieCastUseCase: MovieCastUseCase) {
@@ -34,6 +35,14 @@ final class MoviesCastPresenter: BasePresenter<MoviesCastView> {
     func actor(at row: Int) -> Cast {
         actors[row]
     }
+    
+    func directorsCount() -> Int {
+        directors.count
+    }
+    
+    func director(at row: Int) -> Cast {
+        directors[row]
+    }
 }
 
 // MARK: - Private Helpers
@@ -42,7 +51,7 @@ private extension MoviesCastPresenter {
         switch result {
             case .success(let cast):
                 self.actors = cast.actors
-                print(cast.directors)
+                self.directors = cast.directors
                 view.showCast()
             case .failure(let error):
                 view.showError(with: "\(type(of: error))", and: error.localizedDescription)
