@@ -15,4 +15,5 @@ enum NetworkingConstants {
     static let searchMovies = "/search/movie"
     static let movieDetails = "/movie"
     static let similarMovies = "/movie/{movie_id}/similar"
+    static let movieCast = "/movie/{movie_id}/credits"
 }
