@@ -31,3 +31,11 @@ struct MockMovieDetailsService: MovieDetailsServicing {
         completion(.success(response))
     }
 }
+
+struct MockSimilarMoviesService: SimilarMoviesServicing {
+    func fetchSimilarMovies(by id: Int, completion: @escaping (Result<MoviesResponse, Error>) -> ()) {
+        let jsonData = mockPopularMoviesResponse.data(using: .utf8)!
+        let response = try! JSONDecoder().decode(MoviesResponse.self, from: jsonData)
+        completion(.success(response))
+    }
+}

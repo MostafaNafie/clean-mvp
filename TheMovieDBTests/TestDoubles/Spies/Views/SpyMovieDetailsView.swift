@@ -6,8 +6,6 @@
 //
 
 import Foundation
-
-import Foundation
 @testable import TheMovieDB
 
 final class SpyMovieDetailsView: MovieDetailsView {
