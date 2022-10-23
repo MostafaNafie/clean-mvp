@@ -15,6 +15,7 @@ final class MovieCell: UITableViewCell {
     @IBOutlet private weak var releaseYearLabel: UILabel!
     @IBOutlet private weak var overviewLabel: UILabel!
     @IBOutlet private weak var posterImageView: UIImageView!
+    @IBOutlet private weak var watchlistImageView: UIImageView!
     
     // MARK: - Cell Lifecycle
     override func awakeFromNib() {
@@ -34,5 +35,6 @@ final class MovieCell: UITableViewCell {
         releaseYearLabel.text = movie.releaseYear
         overviewLabel.text = movie.overview
         posterImageView.setImage(with: movie.posterURL)
+        watchlistImageView.image = UIImage(named: movie.isAddedToWatchList ? "heart-filled" : "heart-empty")
     }
 }

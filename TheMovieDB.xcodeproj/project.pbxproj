@@ -86,6 +86,7 @@
 		A3F12AC02905528100C018CB /* CastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3F12ABE2905528100C018CB /* CastCell.xib */; };
 		A3F12AC429055AA300C018CB /* DirectorsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F12AC229055AA300C018CB /* DirectorsCollectionViewDataSource.swift */; };
 		A3F12AC529055AA300C018CB /* DirectorsCollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F12AC329055AA300C018CB /* DirectorsCollectionViewDelegateFlowLayout.swift */; };
+		A3F12AC72905638900C018CB /* WatchlistDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F12AC62905638900C018CB /* WatchlistDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +183,7 @@
 		A3F12ABE2905528100C018CB /* CastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastCell.xib; sourceTree = "<group>"; };
 		A3F12AC229055AA300C018CB /* DirectorsCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectorsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		A3F12AC329055AA300C018CB /* DirectorsCollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectorsCollectionViewDelegateFlowLayout.swift; sourceTree = "<group>"; };
+		A3F12AC62905638900C018CB /* WatchlistDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistDataStore.swift; sourceTree = "<group>"; };
 		B94C3607A6B27EE1524B510D /* Pods-TheMovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDBTests.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDBTests/Pods-TheMovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		CF4965D6DD7CC7FD0BF061B7 /* Pods_TheMovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8653B95DBE44A2124F8E4CA /* Pods-TheMovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDB.debug.xcconfig"; path = "Target Support Files/Pods-TheMovieDB/Pods-TheMovieDB.debug.xcconfig"; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				A3A7E0F12902C601009AD2E5 /* Debouncer.swift */,
+				A3F12AC62905638900C018CB /* WatchlistDataStore.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				A31F02292903C0F700F329D3 /* UIViewController+alert.swift in Sources */,
 				A36622E42901C93C006B9E4C /* NetworkingConstants.swift in Sources */,
 				A3A7E0E62902AAD3009AD2E5 /* SearchMoviesService.swift in Sources */,
+				A3F12AC72905638900C018CB /* WatchlistDataStore.swift in Sources */,
 				A3BC11FC29054039001B8857 /* BasePresenter.swift in Sources */,
 				A36622DE2901BFA4006B9E4C /* HTTPMethod.swift in Sources */,
 				A3A7E0E429029B84009AD2E5 /* UITableView+Extensions.swift in Sources */,

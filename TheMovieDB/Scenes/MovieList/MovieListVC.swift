@@ -22,6 +22,10 @@ final class MovieListVC: BaseVC<MovieListView, MovieListPresenter> {
     private lazy var searchBarDelegate = MovieListSearchBarDelegate(presenter: presenter)
     
     // MARK: - View Lifecycle
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
     override func setupUI() {
         title = "Movie List"
         setupSearchBar()

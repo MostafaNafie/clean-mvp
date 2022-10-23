@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsVC" customModule="TheMovieDB" customModuleProvider="target">
             <connections>
+                <outlet property="addToWatchlistButton" destination="Fjh-mR-jty" id="3eh-Y2-Fhm"/>
                 <outlet property="overViewLabel" destination="M4Z-zx-chm" id="L8W-iU-v9D"/>
                 <outlet property="posterImageView" destination="akX-hP-fS8" id="bK3-ek-bfb"/>
                 <outlet property="subtitleLabel" destination="SHz-6O-d7e" id="SMF-dU-Bng"/>
@@ -58,15 +59,18 @@
                         </label>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fjh-mR-jty">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fjh-mR-jty">
                     <rect key="frame" x="334" y="104" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="5lG-oV-yXn"/>
                         <constraint firstAttribute="height" constant="50" id="P72-Sq-2X0"/>
                     </constraints>
                     <color key="tintColor" systemColor="systemRedColor"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="heart.fill" catalog="system"/>
+                    <inset key="imageEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                    <state key="normal" image="heart-filled"/>
+                    <connections>
+                        <action selector="watchlistButtonTapped:" destination="-1" eventType="touchUpInside" id="3mS-Eo-9S2"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -84,8 +88,8 @@
         </view>
     </objects>
     <resources>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="poster-placeholder" width="193" height="286"/>
+        <image name="heart-filled" width="225" height="225"/>
+        <image name="poster-placeholder" width="386" height="572"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

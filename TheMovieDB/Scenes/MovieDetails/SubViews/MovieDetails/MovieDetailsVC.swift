@@ -18,10 +18,19 @@ final class MovieDetailsVC: BaseVC<MovieDetailsView, MovieDetailsPresenter> {
     @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var overViewLabel: UILabel!
+    @IBOutlet weak var addToWatchlistButton: UIButton!
     
     // MARK: - View Lifecycle
     override func setupUI() {
         posterImageView.layer.cornerRadius = 20
+        addToWatchlistButton.setImage(UIImage(named: "heart-filled"), for: .selected)
+        addToWatchlistButton.setImage(UIImage(named: "heart-empty"), for: .normal)
+    }
+    
+    // MARK: - Actions
+    @IBAction private func watchlistButtonTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        presenter.watchlistButtonTapped()
     }
 }
 
@@ -33,5 +42,6 @@ extension MovieDetailsVC: MovieDetailsView {
         taglineLabel.text = movieDetails.tagline
         overViewLabel.text = movieDetails.overview
         posterImageView.setImage(with: movieDetails.posterURL)
+        addToWatchlistButton.isSelected = movieDetails.isAddedToWatchlist
     }
 }

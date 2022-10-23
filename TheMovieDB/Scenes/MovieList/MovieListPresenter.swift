@@ -20,6 +20,8 @@ final class MovieListPresenter: BasePresenter<MovieListView> {
     private let popularMoviesUseCase: PopularMoviesUseCase
     private let searchMoviesUseCase: SearchMoviesUseCase
     private let coordinator: MovieListCoordinating
+    private let watchlistDataStore: WatchlistDataStore
+    
     private var currentState: MovieListPresenterState = .popularMovies
     private var movies: [Movie] =  []
     private var currentPage = 1
@@ -29,10 +31,12 @@ final class MovieListPresenter: BasePresenter<MovieListView> {
     // MARK: - Init
     init(popularMoviesUseCase: PopularMoviesUseCase,
          searchMoviesUseCase: SearchMoviesUseCase,
-         coordinator: MovieListCoordinating) {
+         coordinator: MovieListCoordinating,
+         watchlistDataStore: WatchlistDataStore) {
         self.popularMoviesUseCase = popularMoviesUseCase
         self.searchMoviesUseCase = searchMoviesUseCase
         self.coordinator = coordinator
+        self.watchlistDataStore = watchlistDataStore
     }
     
     // MARK: - View Lifecycle
@@ -46,7 +50,9 @@ final class MovieListPresenter: BasePresenter<MovieListView> {
     }
     
     func movie(at row: Int) -> Movie {
-        movies[row]
+        var movie = movies[row]
+        movie.isAddedToWatchList = watchlistDataStore.containsMovie(with: movie.id)
+        return movie
     }
     
     /// Check if the last movie is about to be displayed to handle pagination

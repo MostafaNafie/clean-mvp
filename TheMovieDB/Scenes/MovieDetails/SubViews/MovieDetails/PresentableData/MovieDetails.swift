@@ -13,4 +13,5 @@ struct MovieDetails {
     let overview: String
     let posterURL: URL
     let tagline: String
+    var isAddedToWatchlist: Bool
 }

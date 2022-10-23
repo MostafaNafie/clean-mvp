@@ -14,7 +14,8 @@ struct MoviesResponseMapper {
                   title: $0.title,
                   overview: $0.overview,
                   releaseYear: $0.releaseDate?.components(separatedBy: "-").first ?? "0",
-                  posterURL: URL(string: NetworkingConstants.imagesBaseURL + ($0.posterPath ?? ""))!)
+                  posterURL: URL(string: NetworkingConstants.imagesBaseURL + ($0.posterPath ?? ""))!,
+                  isAddedToWatchList: false)
         }
     }
 }

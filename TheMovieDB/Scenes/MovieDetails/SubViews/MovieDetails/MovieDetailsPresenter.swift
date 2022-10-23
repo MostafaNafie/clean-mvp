@@ -14,16 +14,28 @@ final class MovieDetailsPresenter: BasePresenter<MovieDetailsView> {
     // MARK: - Private Properties
     private let id: Int
     private let movieDetailsUseCase: MovieDetailsUseCase
+    private let watchlistDataStore: WatchlistDataStore
     
     // MARK: - Init
-    init(id: Int, movieDetailsUseCase: MovieDetailsUseCase) {
+    init(id: Int,
+         movieDetailsUseCase: MovieDetailsUseCase,
+         watchlistDataStore: WatchlistDataStore) {
         self.id = id
         self.movieDetailsUseCase = movieDetailsUseCase
+        self.watchlistDataStore = watchlistDataStore
     }
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         fetchMoviesDetails()
+    }
+    
+    func watchlistButtonTapped() {
+        if watchlistDataStore.containsMovie(with: id) {
+            watchlistDataStore.removeMovie(with: id)
+        } else {
+            watchlistDataStore.addMovie(with: id)
+        }
     }
 }
 
@@ -38,7 +50,8 @@ private extension MovieDetailsPresenter {
     
     func handleMovieResult(_ result: Result<MovieDetails, Error>) {
         switch result {
-            case .success(let movieDetails):
+            case .success(var movieDetails):
+                movieDetails.isAddedToWatchlist = watchlistDataStore.containsMovie(with: id)
                 view.show(movieDetails)
             case .failure(let error):
                 view.showError(with: "\(type(of: error))", and: error.localizedDescription)

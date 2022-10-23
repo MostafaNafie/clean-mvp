@@ -13,4 +13,5 @@ struct Movie {
     let overview: String
     let releaseYear: String
     let posterURL: URL
+    var isAddedToWatchList: Bool
 }

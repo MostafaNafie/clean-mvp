@@ -18,7 +18,8 @@ struct MovieResponseMapper {
                      subtitle: subtitle,
                      overview: response.overview,
                      posterURL: URL(string: NetworkingConstants.imagesBaseURL + (response.posterPath ?? ""))!,
-                     tagline: response.tagline ?? "N/A")
+                     tagline: response.tagline ?? "N/A",
+                     isAddedToWatchlist: false)
     }
 }
 
