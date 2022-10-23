@@ -31,7 +31,7 @@ final class MovieDetailsVC: UIViewController {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -40,6 +40,7 @@ final class MovieDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.fetchMoviesDetails()
+        setupUI()
     }
 }
 
@@ -50,11 +51,9 @@ extension MovieDetailsVC: MovieDetailsView {
         subtitleLabel.text = movieDetails.releaseDate + " • " + movieDetails.status + " • " + movieDetails.revenue
         taglineLabel.text = movieDetails.tagline
         overViewLabel.text = movieDetails.overview
-        
-        let processor = RoundCornerImageProcessor(cornerRadius: 100)
         posterImageView.kf.setImage(with: movieDetails.posterURL,
                                     placeholder: UIImage(named: "poster-placeholder"),
-                                    options: [.transition(.fade(0.3)), .processor(processor)])
+                                    options: [.transition(.fade(0.3))])
     }
     
     func startLoading() {
@@ -67,5 +66,12 @@ extension MovieDetailsVC: MovieDetailsView {
     
     func showError(with title: String, and message: String) {
         showAlert(with: title, and: message)
+    }
+}
+
+// MARK: - Private Helpers
+private extension MovieDetailsVC {
+    func setupUI() {
+        posterImageView.layer.cornerRadius = 20
     }
 }

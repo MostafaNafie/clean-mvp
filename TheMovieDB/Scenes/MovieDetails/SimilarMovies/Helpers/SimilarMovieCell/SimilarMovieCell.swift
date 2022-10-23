@@ -18,6 +18,7 @@ class SimilarMovieCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         posterImageView.kf.indicatorType = .activity
+        posterImageView.layer.cornerRadius = 15
     }
     
     override func prepareForReuse() {
@@ -27,9 +28,8 @@ class SimilarMovieCell: UICollectionViewCell {
     
     // MARK: - Public Methods
     func configure(_ movie: Movie) {
-        let processor = RoundCornerImageProcessor(cornerRadius: 80)
         posterImageView.kf.setImage(with: movie.posterURL,
                                     placeholder: UIImage(named: "poster-placeholder"),
-                                    options: [.transition(.fade(0.3)), .processor(processor)])
+                                    options: [.transition(.fade(0.3))])
     }
 }

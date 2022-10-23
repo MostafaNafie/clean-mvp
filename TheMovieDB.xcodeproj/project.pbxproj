@@ -72,6 +72,8 @@
 		A3BC11E3290510AD001B8857 /* MovieCastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC11E2290510AD001B8857 /* MovieCastService.swift */; };
 		A3BC11E52905113A001B8857 /* MovieCastRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC11E42905113A001B8857 /* MovieCastRequest.swift */; };
 		A3BC11E7290511B6001B8857 /* MovieCastUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC11E6290511B6001B8857 /* MovieCastUseCase.swift */; };
+		A3BC11EF290513DD001B8857 /* CastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC11ED290513DD001B8857 /* CastVC.swift */; };
+		A3BC11F0290513DD001B8857 /* CastVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BC11EE290513DD001B8857 /* CastVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +156,8 @@
 		A3BC11E2290510AD001B8857 /* MovieCastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCastService.swift; sourceTree = "<group>"; };
 		A3BC11E42905113A001B8857 /* MovieCastRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCastRequest.swift; sourceTree = "<group>"; };
 		A3BC11E6290511B6001B8857 /* MovieCastUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCastUseCase.swift; sourceTree = "<group>"; };
+		A3BC11ED290513DD001B8857 /* CastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastVC.swift; sourceTree = "<group>"; };
+		A3BC11EE290513DD001B8857 /* CastVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastVC.xib; sourceTree = "<group>"; };
 		B94C3607A6B27EE1524B510D /* Pods-TheMovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDBTests.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDBTests/Pods-TheMovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		CF4965D6DD7CC7FD0BF061B7 /* Pods_TheMovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8653B95DBE44A2124F8E4CA /* Pods-TheMovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDB.debug.xcconfig"; path = "Target Support Files/Pods-TheMovieDB/Pods-TheMovieDB.debug.xcconfig"; sourceTree = "<group>"; };
@@ -346,8 +350,8 @@
 				A36622D129012493006B9E4C /* PopularMoviesUseCase.swift */,
 				A3A7E0E72902AC40009AD2E5 /* SearchMoviesUseCase.swift */,
 				A3A7E1032902EBB3009AD2E5 /* MovieDetailsUseCase.swift */,
-				A3BC11E6290511B6001B8857 /* MovieCastUseCase.swift */,
 				A31F02342903CA3500F329D3 /* SimilarMoviesUseCase.swift */,
+				A3BC11E6290511B6001B8857 /* MovieCastUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -488,6 +492,7 @@
 				A31F021B290334B900F329D3 /* MovieDetailsContainer */,
 				A31F022A2903C74000F329D3 /* MovieDetails */,
 				A31F022B2903C7A800F329D3 /* SimilarMovies */,
+				A3BC11E8290512D0001B8857 /* Cast */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -519,6 +524,15 @@
 				A3BC11E029050FB0001B8857 /* CastResponse.swift */,
 			);
 			path = Responses;
+			sourceTree = "<group>";
+		};
+		A3BC11E8290512D0001B8857 /* Cast */ = {
+			isa = PBXGroup;
+			children = (
+				A3BC11ED290513DD001B8857 /* CastVC.swift */,
+				A3BC11EE290513DD001B8857 /* CastVC.xib */,
+			);
+			path = Cast;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -606,6 +620,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A31F022F2903C7A800F329D3 /* SimilarMoviesVC.xib in Resources */,
+				A3BC11F0290513DD001B8857 /* CastVC.xib in Resources */,
 				A36622CD29011BAD006B9E4C /* MovieListVC.xib in Resources */,
 				A36622C1290112F7006B9E4C /* LaunchScreen.storyboard in Resources */,
 				A31F021F2903350A00F329D3 /* MovieDetailsContainerVC.xib in Resources */,
@@ -729,6 +744,7 @@
 				A3A7E0DC29029697009AD2E5 /* MovieListTableViewDelegate.swift in Sources */,
 				A3A7E0F22902C601009AD2E5 /* Debouncer.swift in Sources */,
 				A31F02232903B89E00F329D3 /* UICollectionView+Extensions.swift in Sources */,
+				A3BC11EF290513DD001B8857 /* CastVC.swift in Sources */,
 				A31F02312903C7A800F329D3 /* SimilarMoviesVC.swift in Sources */,
 				A36622E62901CDA0006B9E4C /* Movie.swift in Sources */,
 				A36622E02901C1D0006B9E4C /* MoviesResponse.swift in Sources */,

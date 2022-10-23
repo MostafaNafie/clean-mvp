@@ -21,6 +21,7 @@ final class MovieCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         posterImageView.kf.indicatorType = .activity
+        posterImageView.layer.cornerRadius = 10
     }
     
     override func prepareForReuse() {
@@ -33,10 +34,8 @@ final class MovieCell: UITableViewCell {
         titleLabel.text = movie.title
         releaseYearLabel.text = movie.releaseYear
         overviewLabel.text = movie.overview
-        
-        let processor = RoundCornerImageProcessor(cornerRadius: 100)
         posterImageView.kf.setImage(with: movie.posterURL,
                                     placeholder: UIImage(named: "poster-placeholder"),
-                                    options: [.transition(.fade(0.3)), .processor(processor)])
+                                    options: [.transition(.fade(0.3))])
     }
 }
