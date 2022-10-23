@@ -19,8 +19,9 @@ final class MovieCell: UITableViewCell {
     // MARK: - Cell Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        posterImageView.kf.indicatorType = .activity
+        selectionStyle = .none
         posterImageView.layer.cornerRadius = 10
+        posterImageView.kf.indicatorType = .activity
     }
     
     override func prepareForReuse() {

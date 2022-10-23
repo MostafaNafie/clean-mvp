@@ -16,8 +16,8 @@ class SimilarMovieCell: UICollectionViewCell {
     // MARK: - Cell Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        posterImageView.kf.indicatorType = .activity
         posterImageView.layer.cornerRadius = 15
+        posterImageView.kf.indicatorType = .activity
     }
     
     override func prepareForReuse() {
