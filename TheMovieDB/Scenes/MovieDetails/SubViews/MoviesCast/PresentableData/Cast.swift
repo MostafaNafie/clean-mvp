@@ -8,7 +8,7 @@
 import Foundation
 
 struct Cast {
-    let name: String
     let department: String
     let popularity: Double
+    let profileImageURL: URL
 }

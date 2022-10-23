@@ -9,9 +9,10 @@ import UIKit
 import Kingfisher
 
 extension UIImageView {
-    func setImage(with url: URL) {
+    func setImage(with url: URL, and placeholder: String = "poster-placeholder") {
+        self.kf.indicatorType = .activity
         self.kf.setImage(with: url,
-                         placeholder: UIImage(named: "poster-placeholder"),
+                         placeholder: UIImage(named: placeholder),
                          options: [.transition(.fade(0.3))])
     }
 }

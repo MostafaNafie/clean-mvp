@@ -21,7 +21,6 @@ final class MovieCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         posterImageView.layer.cornerRadius = 10
-        posterImageView.kf.indicatorType = .activity
     }
     
     override func prepareForReuse() {

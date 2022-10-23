@@ -48,8 +48,6 @@ private extension MoviesCastVC {
         actorsCollectionView.register(cellType: CastCell.self)
         actorsCollectionView.dataSource = actorsCollectionViewDataSource
         actorsCollectionView.delegate = actorsCollectionViewDelegate
-        actorsCollectionView.showsHorizontalScrollIndicator = false
-        actorsCollectionView.showsVerticalScrollIndicator = false
         if let flow = actorsCollectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flow.scrollDirection = .horizontal
         }

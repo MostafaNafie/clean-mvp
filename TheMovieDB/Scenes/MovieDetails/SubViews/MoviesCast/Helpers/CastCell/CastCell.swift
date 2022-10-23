@@ -17,7 +17,6 @@ class CastCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         profileImageView.layer.cornerRadius = 200 / 2
-        profileImageView.kf.indicatorType = .activity
     }
     
     override func prepareForReuse() {

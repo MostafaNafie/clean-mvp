@@ -10,8 +10,7 @@ import Foundation
 struct MovieCastResponseMapper {
     func mapResponseToActorsAndDirectors(_ response: CastNetwork.Response) -> (actors: [Cast], directors: [Cast]) {
         let cast = response.crew.map { cast in
-            Cast(name: cast.name,
-                 department: cast.department.rawValue,
+            Cast(department: cast.department.rawValue,
                  popularity: cast.popularity,
                  profileImageURL: URL(string: NetworkingConstants.imagesBaseURL + (cast.profilePath ?? ""))!)
         }

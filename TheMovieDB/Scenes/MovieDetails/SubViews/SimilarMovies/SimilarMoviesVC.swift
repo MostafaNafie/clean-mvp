@@ -9,17 +9,19 @@ import UIKit
 
 protocol SimilarMoviesView: BaseView {
     func showMovies()
-    func getCast(for moviesIDs: [Int])
+    func fetchCast(for moviesIDs: [Int])
 }
 
 protocol CastVCDelegate: AnyObject {
-    func getCast(for moviesIDs: [Int])
+    func fetchCast(for moviesIDs: [Int])
 }
 
 final class SimilarMoviesVC: BaseVC<SimilarMoviesView, SimilarMoviesPresenter> {
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: - Properties
     private lazy var collectionViewDataSource = SimilarMoviesCollectionViewDataSource(presenter: presenter)
     private lazy var collectionViewDelegate = SimilarMoviesCollectionViewDelegateFlowLayout(presenter: presenter)
     
@@ -39,8 +41,8 @@ extension SimilarMoviesVC: SimilarMoviesView {
         collectionView.reloadData()
     }
     
-    func getCast(for moviesIDs: [Int]) {
-        castVCDelegate.getCast(for: moviesIDs)
+    func fetchCast(for moviesIDs: [Int]) {
+        castVCDelegate.fetchCast(for: moviesIDs)
     }
 }
 
@@ -50,8 +52,6 @@ private extension SimilarMoviesVC {
         collectionView.register(cellType: SimilarMovieCell.self)
         collectionView.dataSource = collectionViewDataSource
         collectionView.delegate = collectionViewDelegate
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.showsVerticalScrollIndicator = false
         if let flow = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flow.scrollDirection = .horizontal
         }
