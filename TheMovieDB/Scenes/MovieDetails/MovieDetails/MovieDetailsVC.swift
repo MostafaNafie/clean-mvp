@@ -8,14 +8,11 @@
 import UIKit
 import Kingfisher
 
-protocol MovieDetailsView: AnyObject {
+protocol MovieDetailsView: BaseView {
     func show(_ movieDetails: MovieDetails)
-    func startLoading()
-    func stopLoading()
-    func showError(with title: String, and message: String)
 }
 
-final class MovieDetailsVC: UIViewController {
+final class MovieDetailsVC: BaseVC<MovieDetailsView, MovieDetailsPresenter> {
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -23,24 +20,9 @@ final class MovieDetailsVC: UIViewController {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var overViewLabel: UILabel!
     
-    // MARK: - Properties
-    private let presenter: MovieDetailsPresenter
-    
-    // MARK: - Init
-    init(presenter: MovieDetailsPresenter) {
-        self.presenter = presenter
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: - View Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        presenter.fetchMoviesDetails()
-        setupUI()
+    override func setupUI() {
+        posterImageView.layer.cornerRadius = 20
     }
 }
 
@@ -48,30 +30,11 @@ final class MovieDetailsVC: UIViewController {
 extension MovieDetailsVC: MovieDetailsView {
     func show(_ movieDetails: MovieDetails) {
         titleLabel.text = movieDetails.title
-        subtitleLabel.text = movieDetails.releaseDate + " • " + movieDetails.status + " • " + movieDetails.revenue
+        subtitleLabel.text = movieDetails.subtitle
         taglineLabel.text = movieDetails.tagline
         overViewLabel.text = movieDetails.overview
         posterImageView.kf.setImage(with: movieDetails.posterURL,
                                     placeholder: UIImage(named: "poster-placeholder"),
                                     options: [.transition(.fade(0.3))])
-    }
-    
-    func startLoading() {
-        showLoader()
-    }
-    
-    func stopLoading() {
-        hideLoader()
-    }
-    
-    func showError(with title: String, and message: String) {
-        showAlert(with: title, and: message)
-    }
-}
-
-// MARK: - Private Helpers
-private extension MovieDetailsVC {
-    func setupUI() {
-        posterImageView.layer.cornerRadius = 20
     }
 }

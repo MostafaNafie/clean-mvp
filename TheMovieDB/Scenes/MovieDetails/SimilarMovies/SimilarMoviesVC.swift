@@ -7,19 +7,16 @@
 
 import UIKit
 
-protocol SimilarMoviesView: AnyObject {
+protocol SimilarMoviesView: BaseView {
     func showMovies()
     func getCast(for moviesIDs: [Int])
-    func startLoading()
-    func stopLoading()
-    func showError(with title: String, and message: String)
 }
 
 protocol CastVCDelegate: AnyObject {
     func getCast(for moviesIDs: [Int])
 }
 
-final class SimilarMoviesVC: UIViewController {
+final class SimilarMoviesVC: BaseVC<SimilarMoviesView, SimilarMoviesPresenter> {
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,25 +24,12 @@ final class SimilarMoviesVC: UIViewController {
     private lazy var collectionViewDelegate = SimilarMoviesCollectionViewDelegateFlowLayout(presenter: presenter)
     
     // MARK: - Properties
-    private let presenter: SimilarMoviesPresenter
-    private let castVCDelegate: CastVCDelegate
-    
-    // MARK: - Init
-    init(presenter: SimilarMoviesPresenter, castVCDelegate: CastVCDelegate) {
-        self.presenter = presenter
-        self.castVCDelegate = castVCDelegate
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    weak var castVCDelegate: CastVCDelegate!
     
     // MARK: - View Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        presenter.fetchMoviesDetails()
-        setupUI()
+    override func setupUI() {
+        titleLabel.text = "Similar Movies"
+        setupCollectionView()
     }
 }
 
@@ -58,27 +42,10 @@ extension SimilarMoviesVC: SimilarMoviesView {
     func getCast(for moviesIDs: [Int]) {
         castVCDelegate.getCast(for: moviesIDs)
     }
-    
-    func startLoading() {
-        showLoader()
-    }
-    
-    func stopLoading() {
-        hideLoader()
-    }
-    
-    func showError(with title: String, and message: String) {
-        showAlert(with: title, and: message)
-    }
 }
 
 // MARK: - Private helpers
 private extension SimilarMoviesVC {
-    func setupUI() {
-        titleLabel.text = "Similar Movies"
-        setupCollectionView()
-    }
-    
     func setupCollectionView() {
         collectionView.register(cellType: SimilarMovieCell.self)
         collectionView.dataSource = collectionViewDataSource

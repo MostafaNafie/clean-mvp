@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SimilarMoviesPresenter {
+final class SimilarMoviesPresenter: BasePresenter<SimilarMoviesView> {
     // MARK: - Poperties
     weak var view: SimilarMoviesView!
     
@@ -22,14 +22,12 @@ final class SimilarMoviesPresenter {
         self.similarMoviesUseCase = similarMoviesUseCase
     }
     
-    // MARK: - Public Methods
-    func fetchMoviesDetails() {
-        view.startLoading()
-        similarMoviesUseCase.fetchSimilarMovies(by: id) { [weak self] result in
-            self?.handleMoviesResult(result)
-        }
+    // MARK: - View Lifecycle
+    override func viewDidLoad() {
+        fetchMoviesDetails()
     }
     
+    // MARK: - Public Methods
     func moviesCount() -> Int {
         movies.count
     }
@@ -41,6 +39,13 @@ final class SimilarMoviesPresenter {
 
 // MARK: - Private Helpers
 private extension SimilarMoviesPresenter {
+    func fetchMoviesDetails() {
+        view.startLoading()
+        similarMoviesUseCase.fetchSimilarMovies(by: id) { [weak self] result in
+            self?.handleMoviesResult(result)
+        }
+    }
+    
     func handleMoviesResult(_ result: Result<[Movie], Error>) {
         switch result {
             case .success(let movies):

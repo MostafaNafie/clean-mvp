@@ -67,8 +67,8 @@ private extension DependencyFactory {
         let presenter = SimilarMoviesPresenter(id: id,
                                                similarMoviesUseCase: similarMoviesUseCase)
         
-        let similarMoviesVC = SimilarMoviesVC(presenter: presenter,
-                                              castVCDelegate: castVCDelegate)
+        let similarMoviesVC = SimilarMoviesVC(presenter: presenter)
+        similarMoviesVC.castVCDelegate = castVCDelegate
         presenter.view = similarMoviesVC
         
         return similarMoviesVC

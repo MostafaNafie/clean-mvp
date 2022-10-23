@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MoviesCastPresenter {
+final class MoviesCastPresenter: BasePresenter<MoviesCastView> {
     // MARK: - Poperties
     weak var view: MoviesCastView!
     

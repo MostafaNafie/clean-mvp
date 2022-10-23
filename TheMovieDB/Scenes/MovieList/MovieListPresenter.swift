@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MovieListPresenter {
+final class MovieListPresenter: BasePresenter<MovieListView> {
     enum MovieListPresenterState {
         case popularMovies
         case searchMovies
@@ -35,14 +35,12 @@ final class MovieListPresenter {
         self.coordinator = coordinator
     }
     
-    // MARK: - Public Methods
-    func fetchMovies(at page: Int = 1) {
-        view.startLoading()
-        popularMoviesUseCase.fetchMovies(at: page) { [weak self] result in
-            self?.handleMoviesResult(result)
-        }
+    // MARK: - View Lifecycle
+    override func viewDidLoad() {
+        fetchMovies()
     }
     
+    // MARK: - Public Methods
     func moviesCount() -> Int {
         movies.count
     }
@@ -91,8 +89,15 @@ final class MovieListPresenter {
     }
 }
 
-// MARK: - Private helpers
+// MARK: - Private Helpers
 private extension MovieListPresenter {
+    func fetchMovies(at page: Int = 1) {
+        view.startLoading()
+        popularMoviesUseCase.fetchMovies(at: page) { [weak self] result in
+            self?.handleMoviesResult(result)
+        }
+    }
+    
     func handleMoviesResult(_ result: Result<(totalPages: Int, movies: [Movie]), Error>) {
         switch result {
             case .success(let response):

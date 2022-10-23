@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MovieDetailsPresenter {
+final class MovieDetailsPresenter: BasePresenter<MovieDetailsView> {
     // MARK: - Poperties
     weak var view: MovieDetailsView!
     
@@ -21,17 +21,21 @@ final class MovieDetailsPresenter {
         self.movieDetailsUseCase = movieDetailsUseCase
     }
     
-    // MARK: - Public Methods
+    // MARK: - View Lifecycle
+    override func viewDidLoad() {
+        fetchMoviesDetails()
+    }
+}
+
+// MARK: - Private Helpers
+private extension MovieDetailsPresenter {
     func fetchMoviesDetails() {
         view.startLoading()
         movieDetailsUseCase.fetchMovieDetails(by: id) { [weak self] result in
             self?.handleMovieResult(result)
         }
     }
-}
-
-// MARK: - Private Helpers
-private extension MovieDetailsPresenter {
+    
     func handleMovieResult(_ result: Result<MovieDetails, Error>) {
         switch result {
             case .success(let movieDetails):
