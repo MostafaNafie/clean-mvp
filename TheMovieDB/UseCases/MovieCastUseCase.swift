@@ -66,7 +66,7 @@ private extension MovieCastUseCase {
             switch result {
                 case .success(let castResponse):
                     let mappedResponse = self.movieCastResponseMapper.mapResponseToActorsAndDirectors(castResponse)
-                    self.serialQueue.sync {
+                    self.serialQueue.async {
                         self.allActors.append(contentsOf: mappedResponse.actors)
                         self.allDirectors.append(contentsOf: mappedResponse.directors)
                     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Cast {
+struct Cast: Equatable {
     let department: String
     let popularity: Double
     let profileImageURL: URL

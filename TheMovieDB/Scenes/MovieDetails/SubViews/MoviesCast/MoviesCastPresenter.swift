@@ -22,9 +22,10 @@ final class MoviesCastPresenter: BasePresenter<MoviesCastView> {
     }
     
     // MARK: - Public Methods
-    func fetchCast(for moviesIDs: [Int]) {
+    func fetchCast(for moviesIDs: [Int], completion: (() -> ())? = nil) {
         movieCastUseCase.fetchMoviesCast(for: moviesIDs) { [weak self] result in
             self?.handleCastResult(result)
+            completion?()
         }
     }
     

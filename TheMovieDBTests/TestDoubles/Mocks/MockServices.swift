@@ -39,3 +39,11 @@ struct MockSimilarMoviesService: SimilarMoviesServicing {
         completion(.success(response))
     }
 }
+
+struct MockMovieCastService: MovieCastServicing {
+    func fetchMovieCast(by id: Int, completion: @escaping (Result<CastResponse, Error>) -> ()) {
+        let jsonData = mockCastResponse.data(using: .utf8)!
+        let response = try! JSONDecoder().decode(CastResponse.self, from: jsonData)
+        completion(.success(response))
+    }
+}
