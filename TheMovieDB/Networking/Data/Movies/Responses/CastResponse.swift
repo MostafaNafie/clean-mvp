@@ -10,24 +10,26 @@ import Foundation
 enum CastNetwork {
     struct Response: Decodable {
         let id: Int
-        let cast: [Cast]
+        let crew: [Cast]
     }
 
     // MARK: - Cast
-    struct Cast: Decodable {
+    struct Cast: Codable {
         let adult: Bool
         let gender, id: Int
-        let knownForDepartment: KnownForDepartment
         let name, originalName: String
         let popularity: Double
         let profilePath: String?
-        let castID: Int
-        let character, creditID: String
-        let order: Int
+        let castID: Int?
+        let character: String?
+        let creditID: String
+        let order: Int?
+        let department: Department
+        let job: String?
 
         enum CodingKeys: String, CodingKey {
             case adult, gender, id
-            case knownForDepartment = "known_for_department"
+            case department = "known_for_department"
             case name
             case originalName = "original_name"
             case popularity
@@ -35,14 +37,22 @@ enum CastNetwork {
             case castID = "cast_id"
             case character
             case creditID = "credit_id"
-            case order
+            case order, job
         }
     }
 
-    enum KnownForDepartment: String, Decodable {
+    enum Department: String, Codable {
         case acting = "Acting"
-        case directing = "Directing"
+        case art = "Art"
+        case camera = "Camera"
+        case costumeMakeUp = "Costume & Make-Up"
         case crew = "Crew"
+        case directing = "Directing"
+        case editing = "Editing"
+        case lighting = "Lighting"
+        case production = "Production"
+        case sound = "Sound"
+        case visualEffects = "Visual Effects"
         case writing = "Writing"
     }
 }

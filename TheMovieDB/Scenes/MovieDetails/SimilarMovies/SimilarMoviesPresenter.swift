@@ -46,6 +46,8 @@ private extension SimilarMoviesPresenter {
             case .success(let movies):
                 self.movies = movies
                 view.showMovies()
+                let moviesIDS = movies.map { $0.id }
+                view.getCast(for: moviesIDS)
             case .failure(let error):
                 view.showError(with: "\(type(of: error))", and: error.localizedDescription)
         }

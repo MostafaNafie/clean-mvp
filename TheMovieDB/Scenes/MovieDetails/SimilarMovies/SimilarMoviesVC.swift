@@ -9,9 +9,14 @@ import UIKit
 
 protocol SimilarMoviesView: AnyObject {
     func showMovies()
+    func getCast(for moviesIDs: [Int])
     func startLoading()
     func stopLoading()
     func showError(with title: String, and message: String)
+}
+
+protocol CastVCDelegate: AnyObject {
+    func getCast(for moviesIDs: [Int])
 }
 
 final class SimilarMoviesVC: UIViewController {
@@ -23,10 +28,12 @@ final class SimilarMoviesVC: UIViewController {
     
     // MARK: - Properties
     private let presenter: SimilarMoviesPresenter
+    private let castVCDelegate: CastVCDelegate
     
     // MARK: - Init
-    init(presenter: SimilarMoviesPresenter) {
+    init(presenter: SimilarMoviesPresenter, castVCDelegate: CastVCDelegate) {
         self.presenter = presenter
+        self.castVCDelegate = castVCDelegate
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -46,6 +53,10 @@ final class SimilarMoviesVC: UIViewController {
 extension SimilarMoviesVC: SimilarMoviesView {
     func showMovies() {
         collectionView.reloadData()
+    }
+    
+    func getCast(for moviesIDs: [Int]) {
+        castVCDelegate.getCast(for: moviesIDs)
     }
     
     func startLoading() {

@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsContainerVC" customModule="TheMovieDB" customModuleProvider="target">
             <connections>
                 <outlet property="movieDetailsContainerView" destination="2AC-hM-d8d" id="8Si-6q-T5C"/>
+                <outlet property="moviesCastContainerView" destination="Vnu-Xc-gB4" id="eb0-TX-zaw"/>
                 <outlet property="similarMoviesContainerView" destination="IGI-s4-jab" id="Ie8-F3-F2e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

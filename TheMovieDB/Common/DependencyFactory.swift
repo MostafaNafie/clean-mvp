@@ -37,9 +37,11 @@ struct DependencyFactory: Factory {
     
     func makeMovieDetailsContainerVC(with id: Int) -> MovieDetailsContainerVC {
         let movieDetailsVC = makeMovieDetailsVC(with: id)
-        let similarMoviesVC = makeSimilarMoviesVC(with: id)
+        let moviesCastVC = makeMoviesCastVC()
+        let similarMoviesVC = makeSimilarMoviesVC(with: id, and: moviesCastVC)
         return MovieDetailsContainerVC(movieDetailsVC: movieDetailsVC,
-                                       similarMoviesVC: similarMoviesVC)
+                                       similarMoviesVC: similarMoviesVC,
+                                       moviesCastVC: moviesCastVC)
     }
 }
 
@@ -58,16 +60,29 @@ private extension DependencyFactory {
         return movieDetailsVC
     }
     
-    func makeSimilarMoviesVC(with id: Int) -> SimilarMoviesVC {
+    func makeSimilarMoviesVC(with id: Int, and castVCDelegate: CastVCDelegate) -> SimilarMoviesVC {
         let similarMoviesService = SimilarMoviesService(client: urlSessionClient)
         let similarMoviesUseCase = SimilarMoviesUseCase(networkService: similarMoviesService,
                                                         moviesResponseMapper: moviesResponseMapper)
         let presenter = SimilarMoviesPresenter(id: id,
                                                similarMoviesUseCase: similarMoviesUseCase)
         
-        let similarMoviesVC = SimilarMoviesVC(presenter: presenter)
+        let similarMoviesVC = SimilarMoviesVC(presenter: presenter,
+                                              castVCDelegate: castVCDelegate)
         presenter.view = similarMoviesVC
         
         return similarMoviesVC
+    }
+    
+    func makeMoviesCastVC() -> MoviesCastVC {
+        let networkService = MovieCastService(client: urlSessionClient)
+        let movieCastResponseMapper = MovieCastResponseMapper()
+        let movieCastUseCase = MovieCastUseCase(networkService: networkService,
+                                                movieCastResponseMapper: movieCastResponseMapper)
+        let presenter = MoviesCastPresenter(movieCastUseCase: movieCastUseCase)
+        let moviesCastVC = MoviesCastVC(presenter: presenter)
+        presenter.view = moviesCastVC
+        
+        return moviesCastVC
     }
 }
