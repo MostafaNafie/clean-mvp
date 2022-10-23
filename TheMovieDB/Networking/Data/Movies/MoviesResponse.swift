@@ -34,6 +34,9 @@ enum MoviesNetwork {
         let video: Bool
         let voteAverage: Double
         let voteCount: Int
+        let tagline: String?
+        let status: String?
+        let revenue: Int?
 
         enum CodingKeys: String, CodingKey {
             case adult
@@ -48,6 +51,9 @@ enum MoviesNetwork {
             case title, video
             case voteAverage = "vote_average"
             case voteCount = "vote_count"
+            case tagline
+            case status
+            case revenue
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol MovieDetailsView: AnyObject {
     func show(_ movieDetails: MovieDetails)
@@ -17,8 +18,10 @@ protocol MovieDetailsView: AnyObject {
 final class MovieDetailsVC: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var taglineLabel: UILabel!
+    @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var overViewLabel: UILabel!
-    @IBOutlet weak var releaseDateLabel: UILabel!
     
     // MARK: - Properties
     private let presenter: MovieDetailsPresenter
@@ -44,8 +47,14 @@ final class MovieDetailsVC: UIViewController {
 extension MovieDetailsVC: MovieDetailsView {
     func show(_ movieDetails: MovieDetails) {
         titleLabel.text = movieDetails.title
+        subtitleLabel.text = movieDetails.releaseDate + " • " + movieDetails.status + " • " + movieDetails.revenue
+        taglineLabel.text = movieDetails.tagline
         overViewLabel.text = movieDetails.overview
-        releaseDateLabel.text = movieDetails.releaseDate
+        
+        let processor = RoundCornerImageProcessor(cornerRadius: 100)
+        posterImageView.kf.setImage(with: movieDetails.posterURL,
+                                    placeholder: UIImage(named: "poster-placeholder"),
+                                    options: [.transition(.fade(0.3)), .processor(processor)])
     }
     
     func startLoading() {
@@ -59,8 +68,4 @@ extension MovieDetailsVC: MovieDetailsView {
     func showError(with title: String, and message: String) {
         showAlert(with: title, and: message)
     }
-}
-
-// MARK: - Private helpers
-private extension MovieDetailsVC {
 }

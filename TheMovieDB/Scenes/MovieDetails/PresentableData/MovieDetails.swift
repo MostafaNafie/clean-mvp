@@ -12,4 +12,7 @@ struct MovieDetails {
     let overview: String
     let releaseDate: String
     let posterURL: URL
+    let tagline: String
+    let status: String
+    let revenue: String
 }
