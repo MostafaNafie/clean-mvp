@@ -1,13 +1,11 @@
 //
-//  FakeResponse.swift
+//  MockPopularMoviesResponse.swift
 //  TheMovieDBTests
 //
 //  Created by Mostafa Nafie on 20/10/2022.
 //
 
-import Foundation
-
-let fakePopularMoviesResponse = """
+let mockPopularMoviesResponse = """
 {
   "page": 1,
   "results": [
