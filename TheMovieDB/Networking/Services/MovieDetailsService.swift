@@ -8,9 +8,9 @@
 import Foundation
 
 protocol MovieDetailsServicing {
-    typealias MoviesResponse = MoviesNetwork.Movie
+    typealias MovieResponse = MoviesNetwork.Movie
     
-    func fetchMovieDetails(by id: Int, completion: @escaping (Result<MoviesResponse, Error>) -> ())
+    func fetchMovieDetails(by id: Int, completion: @escaping (Result<MovieResponse, Error>) -> ())
 }
 
 struct MovieDetailsService: MovieDetailsServicing {
@@ -20,10 +20,10 @@ struct MovieDetailsService: MovieDetailsServicing {
         self.client = client
     }
     
-    func fetchMovieDetails(by id: Int, completion: @escaping (Result<MoviesResponse, Error>) -> ()) {
+    func fetchMovieDetails(by id: Int, completion: @escaping (Result<MovieResponse, Error>) -> ()) {
         let request = MovieDetailsRequest(id: id).buildURLRequest()
-        client.perform(request) { (result: Result<MoviesResponse, Error>) in
-            let response: Result<MoviesResponse, Error>
+        client.perform(request) { (result: Result<MovieResponse, Error>) in
+            let response: Result<MovieResponse, Error>
             defer { completion(response) }
             switch result {
                 case .success(let moviesResponse):
