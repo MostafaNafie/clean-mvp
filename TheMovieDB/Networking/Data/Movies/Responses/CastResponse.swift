@@ -47,6 +47,7 @@ enum CastNetwork {
         case camera = "Camera"
         case costumeMakeUp = "Costume & Make-Up"
         case crew = "Crew"
+        case creator = "Creator"
         case directing = "Directing"
         case editing = "Editing"
         case lighting = "Lighting"
