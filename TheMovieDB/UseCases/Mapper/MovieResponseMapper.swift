@@ -9,13 +9,16 @@ import Foundation
 
 struct MovieResponseMapper {
     func mapResponseToMovieDetails(_ response: MoviesNetwork.Movie) -> MovieDetails {
-        .init(title: response.title,
-              overview: response.overview,
-              releaseDate: response.releaseDate ?? "N/A",
-              posterURL: URL(string: NetworkingConstants.imagesBaseURL + (response.posterPath ?? ""))!,
-              tagline: response.tagline ?? "N/A",
-              status: response.status ?? "N/A",
-              revenue: format(response.revenue ?? 0) ?? "N/A")
+        let releaseDate = response.releaseDate ?? "N/A"
+        let status = response.status ?? "N/A"
+        let revenue = format(response.revenue ?? 0) ?? "N/A"
+        let subtitle = releaseDate + " • " + status + " • " + revenue
+        
+        return .init(title: response.title,
+                     subtitle: subtitle,
+                     overview: response.overview,
+                     posterURL: URL(string: NetworkingConstants.imagesBaseURL + (response.posterPath ?? ""))!,
+                     tagline: response.tagline ?? "N/A")
     }
 }
 

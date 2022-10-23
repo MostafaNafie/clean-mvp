@@ -9,10 +9,8 @@ import Foundation
 
 struct MovieDetails {
     let title: String
+    let subtitle: String
     let overview: String
-    let releaseDate: String
     let posterURL: URL
     let tagline: String
-    let status: String
-    let revenue: String
 }
