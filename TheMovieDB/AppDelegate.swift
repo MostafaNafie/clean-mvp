@@ -9,20 +9,9 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootNavigationController = UINavigationController()
-        rootNavigationController.navigationBar.prefersLargeTitles = true
-        
-        let coordinator = MovieListCoordinator(factory: DependencyFactory(),
-                                               navigationController: rootNavigationController)
+        let coordinator = MovieListCoordinator(factory: DependencyFactory())
         coordinator.start()
-        
-        window = UIWindow()
-        window?.rootViewController = rootNavigationController
-        window?.makeKeyAndVisible()
         return true
     }
 }
-

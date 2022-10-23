@@ -305,6 +305,7 @@
 				A36622B4290112F6006B9E4C /* AppDelegate.swift */,
 				A36622D029012361006B9E4C /* Common */,
 				A36622D72901B92A006B9E4C /* Networking */,
+				A3F12AC82905C94400C018CB /* DataStores */,
 				A36622E72901D65E006B9E4C /* UseCases */,
 				A36622C829011B66006B9E4C /* Scenes */,
 			);
@@ -478,12 +479,12 @@
 		A3A7E0E229029B67009AD2E5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A31F02282903C0F700F329D3 /* UIViewController+alert.swift */,
 				A31F022029033E9200F329D3 /* UIViewController+addChildVC.swift */,
-				A3A7E0E329029B84009AD2E5 /* UITableView+Extensions.swift */,
-				A31F02222903B89E00F329D3 /* UICollectionView+Extensions.swift */,
 				A31F02242903BB7A00F329D3 /* UIViewcontroller+activityIndicator.swift */,
 				A3BC11FD2905426C001B8857 /* UIImageView+setImage.swift */,
-				A31F02282903C0F700F329D3 /* UIViewController+alert.swift */,
+				A3A7E0E329029B84009AD2E5 /* UITableView+Extensions.swift */,
+				A31F02222903B89E00F329D3 /* UICollectionView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -502,7 +503,6 @@
 			isa = PBXGroup;
 			children = (
 				A3A7E0F12902C601009AD2E5 /* Debouncer.swift */,
-				A3F12AC62905638900C018CB /* WatchlistDataStore.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -628,6 +628,14 @@
 				A3F12AC329055AA300C018CB /* DirectorsCollectionViewDelegateFlowLayout.swift */,
 			);
 			path = DirectorsCollectionView;
+			sourceTree = "<group>";
+		};
+		A3F12AC82905C94400C018CB /* DataStores */ = {
+			isa = PBXGroup;
+			children = (
+				A3F12AC62905638900C018CB /* WatchlistDataStore.swift */,
+			);
+			path = DataStores;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

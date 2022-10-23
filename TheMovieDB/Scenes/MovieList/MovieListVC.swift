@@ -26,6 +26,7 @@ final class MovieListVC: BaseVC<MovieListView, MovieListPresenter> {
         super.viewDidAppear(animated)
         tableView.reloadData()
     }
+    
     override func setupUI() {
         title = "Movie List"
         setupSearchBar()

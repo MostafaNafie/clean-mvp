@@ -20,7 +20,7 @@ final class MovieListPresenter: BasePresenter<MovieListView> {
     private let popularMoviesUseCase: PopularMoviesUseCase
     private let searchMoviesUseCase: SearchMoviesUseCase
     private let coordinator: MovieListCoordinating
-    private let watchlistDataStore: WatchlistDataStore
+    private let watchlistDataStore: WatchlistDataStoring
     
     private var currentState: MovieListPresenterState = .popularMovies
     private var movies: [Movie] =  []
@@ -32,7 +32,7 @@ final class MovieListPresenter: BasePresenter<MovieListView> {
     init(popularMoviesUseCase: PopularMoviesUseCase,
          searchMoviesUseCase: SearchMoviesUseCase,
          coordinator: MovieListCoordinating,
-         watchlistDataStore: WatchlistDataStore) {
+         watchlistDataStore: WatchlistDataStoring) {
         self.popularMoviesUseCase = popularMoviesUseCase
         self.searchMoviesUseCase = searchMoviesUseCase
         self.coordinator = coordinator

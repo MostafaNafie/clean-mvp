@@ -14,12 +14,12 @@ final class MovieDetailsPresenter: BasePresenter<MovieDetailsView> {
     // MARK: - Private Properties
     private let id: Int
     private let movieDetailsUseCase: MovieDetailsUseCase
-    private let watchlistDataStore: WatchlistDataStore
+    private let watchlistDataStore: WatchlistDataStoring
     
     // MARK: - Init
     init(id: Int,
          movieDetailsUseCase: MovieDetailsUseCase,
-         watchlistDataStore: WatchlistDataStore) {
+         watchlistDataStore: WatchlistDataStoring) {
         self.id = id
         self.movieDetailsUseCase = movieDetailsUseCase
         self.watchlistDataStore = watchlistDataStore

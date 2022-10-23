@@ -17,6 +17,7 @@ struct DependencyFactory: Factory {
     private let moviesResponseMapper = MoviesResponseMapper()
     private let watchlistDataStore = WatchlistDataStore()
     
+    // MARK: - Public Methods
     func makeMovieListVC(_ coordinator: MovieListCoordinating) -> MovieListVC {
         let popularMoviesService = PopularMoviesService(client: urlSessionClient)
         let popularMoviesUseCase = PopularMoviesUseCase(networkService: popularMoviesService,
@@ -47,6 +48,7 @@ struct DependencyFactory: Factory {
     }
 }
 
+// MARK: - Private Helpers
 private extension DependencyFactory {
     func makeMovieDetailsVC(with id: Int) -> MovieDetailsVC {
         let movieResponseMapper = MovieResponseMapper()
