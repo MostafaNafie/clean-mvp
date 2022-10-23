@@ -215,13 +215,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A31F021B290334B900F329D3 /* MovieDetailsContainer */ = {
+		A31F021B290334B900F329D3 /* Container */ = {
 			isa = PBXGroup;
 			children = (
 				A31F021C2903350A00F329D3 /* MovieDetailsContainerVC.swift */,
 				A31F021D2903350A00F329D3 /* MovieDetailsContainerVC.xib */,
 			);
-			path = MovieDetailsContainer;
+			path = Container;
 			sourceTree = "<group>";
 		};
 		A31F022A2903C74000F329D3 /* MovieDetails */ = {
@@ -504,10 +504,8 @@
 		A3A7E0FC2902E466009AD2E5 /* MovieDetails */ = {
 			isa = PBXGroup;
 			children = (
-				A31F021B290334B900F329D3 /* MovieDetailsContainer */,
-				A31F022A2903C74000F329D3 /* MovieDetails */,
-				A31F022B2903C7A800F329D3 /* SimilarMovies */,
-				A3BC11E8290512D0001B8857 /* MoviesCast */,
+				A31F021B290334B900F329D3 /* Container */,
+				A3BC11FF29054359001B8857 /* SubViews */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -567,6 +565,16 @@
 				A3BC11FB29054039001B8857 /* BasePresenter.swift */,
 			);
 			path = BaseWireframe;
+			sourceTree = "<group>";
+		};
+		A3BC11FF29054359001B8857 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				A31F022A2903C74000F329D3 /* MovieDetails */,
+				A31F022B2903C7A800F329D3 /* SimilarMovies */,
+				A3BC11E8290512D0001B8857 /* MoviesCast */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
