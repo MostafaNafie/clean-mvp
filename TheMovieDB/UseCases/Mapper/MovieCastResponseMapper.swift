@@ -12,7 +12,8 @@ struct MovieCastResponseMapper {
         let cast = response.crew.map { cast in
             Cast(name: cast.name,
                  department: cast.department.rawValue,
-                 popularity: cast.popularity)
+                 popularity: cast.popularity,
+                 profileImageURL: URL(string: NetworkingConstants.imagesBaseURL + (cast.profilePath ?? ""))!)
         }
         
         var actors = [Cast]()
