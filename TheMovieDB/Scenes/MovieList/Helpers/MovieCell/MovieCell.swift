@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 final class MovieCell: UITableViewCell {
     static let height: CGFloat = 250
@@ -34,8 +33,6 @@ final class MovieCell: UITableViewCell {
         titleLabel.text = movie.title
         releaseYearLabel.text = movie.releaseYear
         overviewLabel.text = movie.overview
-        posterImageView.kf.setImage(with: movie.posterURL,
-                                    placeholder: UIImage(named: "poster-placeholder"),
-                                    options: [.transition(.fade(0.3))])
+        posterImageView.setImage(with: movie.posterURL)
     }
 }

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 protocol MovieDetailsView: BaseView {
     func show(_ movieDetails: MovieDetails)
@@ -33,8 +32,6 @@ extension MovieDetailsVC: MovieDetailsView {
         subtitleLabel.text = movieDetails.subtitle
         taglineLabel.text = movieDetails.tagline
         overViewLabel.text = movieDetails.overview
-        posterImageView.kf.setImage(with: movieDetails.posterURL,
-                                    placeholder: UIImage(named: "poster-placeholder"),
-                                    options: [.transition(.fade(0.3))])
+        posterImageView.setImage(with: movieDetails.posterURL)
     }
 }

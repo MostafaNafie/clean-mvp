@@ -79,6 +79,7 @@
 		A3BC11F72905351D001B8857 /* MovieCastResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC11F62905351D001B8857 /* MovieCastResponseMapper.swift */; };
 		A3BC11FA29054013001B8857 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC11F929054013001B8857 /* BaseVC.swift */; };
 		A3BC11FC29054039001B8857 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC11FB29054039001B8857 /* BasePresenter.swift */; };
+		A3BC11FE2905426C001B8857 /* UIImageView+setImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC11FD2905426C001B8857 /* UIImageView+setImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,7 @@
 		A3BC11F62905351D001B8857 /* MovieCastResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCastResponseMapper.swift; sourceTree = "<group>"; };
 		A3BC11F929054013001B8857 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		A3BC11FB29054039001B8857 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
+		A3BC11FD2905426C001B8857 /* UIImageView+setImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+setImage.swift"; sourceTree = "<group>"; };
 		B94C3607A6B27EE1524B510D /* Pods-TheMovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDBTests.release.xcconfig"; path = "Target Support Files/Pods-TheMovieDBTests/Pods-TheMovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		CF4965D6DD7CC7FD0BF061B7 /* Pods_TheMovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8653B95DBE44A2124F8E4CA /* Pods-TheMovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieDB.debug.xcconfig"; path = "Target Support Files/Pods-TheMovieDB/Pods-TheMovieDB.debug.xcconfig"; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 				A3A7E0E329029B84009AD2E5 /* UITableView+Extensions.swift */,
 				A31F02222903B89E00F329D3 /* UICollectionView+Extensions.swift */,
 				A31F02242903BB7A00F329D3 /* UIViewcontroller+activityIndicator.swift */,
+				A3BC11FD2905426C001B8857 /* UIImageView+setImage.swift */,
 				A31F02282903C0F700F329D3 /* UIViewController+alert.swift */,
 			);
 			path = Extensions;
@@ -783,6 +786,7 @@
 				A31F02312903C7A800F329D3 /* SimilarMoviesVC.swift in Sources */,
 				A36622E62901CDA0006B9E4C /* Movie.swift in Sources */,
 				A36622E02901C1D0006B9E4C /* MoviesResponse.swift in Sources */,
+				A3BC11FE2905426C001B8857 /* UIImageView+setImage.swift in Sources */,
 				A3A7E0EC2902B96F009AD2E5 /* MoviesResponseMapper.swift in Sources */,
 				A31F02402903D58800F329D3 /* SimilarMovieCell.swift in Sources */,
 				A36622EF2901DA19006B9E4C /* HTTPClient.swift in Sources */,

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class SimilarMovieCell: UICollectionViewCell {
     static let size: CGSize = .init(width: 200, height: 300)
@@ -28,8 +27,6 @@ class SimilarMovieCell: UICollectionViewCell {
     
     // MARK: - Public Methods
     func configure(_ movie: Movie) {
-        posterImageView.kf.setImage(with: movie.posterURL,
-                                    placeholder: UIImage(named: "poster-placeholder"),
-                                    options: [.transition(.fade(0.3))])
+        posterImageView.setImage(with: movie.posterURL)
     }
 }
