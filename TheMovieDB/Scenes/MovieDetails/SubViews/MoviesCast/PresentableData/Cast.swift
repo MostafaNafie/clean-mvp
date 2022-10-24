@@ -8,6 +8,7 @@
 import Foundation
 
 struct Cast: Equatable, Hashable {
+    let name: String
     let department: String
     let popularity: Double
     let profileImageURL: URL

@@ -8,15 +8,16 @@
 import UIKit
 
 class CastCell: UICollectionViewCell {
-    static let size: CGSize = .init(width: 200, height: 200)
+    static let size: CGSize = .init(width: 160, height: 200)
     
     // MARK: - Outlets
     @IBOutlet private weak var profileImageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
     
     // MARK: - Cell Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        profileImageView.layer.cornerRadius = 200 / 2
+        profileImageView.layer.cornerRadius = 160 / 2
     }
     
     override func prepareForReuse() {
@@ -26,6 +27,7 @@ class CastCell: UICollectionViewCell {
     
     // MARK: - Public Methods
     func configure(_ cast: Cast) {
+        nameLabel.text = cast.name
         profileImageView.setImage(with: cast.profileImageURL, and: "profile-placeholder")
     }
 }

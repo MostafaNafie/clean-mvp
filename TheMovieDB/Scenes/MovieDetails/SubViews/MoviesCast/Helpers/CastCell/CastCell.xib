@@ -11,29 +11,44 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CastCell" customModule="TheMovieDB" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="177" height="261"/>
+            <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="177" height="261"/>
+                <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="6lq-Fg-jWw">
-                        <rect key="frame" x="0.0" y="0.0" width="177" height="261"/>
-                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VOw-JO-Uns">
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="6lq-Fg-jWw">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6lq-Fg-jWw" secondAttribute="height" id="aH0-3P-DTq"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yht-sG-Jle">
+                                <rect key="frame" x="0.0" y="165" width="160" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="6lq-Fg-jWw" secondAttribute="trailing" id="4m7-SW-wdE"/>
-                <constraint firstItem="6lq-Fg-jWw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Dhu-62-gJF"/>
-                <constraint firstItem="6lq-Fg-jWw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hLy-7G-pJu"/>
-                <constraint firstAttribute="bottom" secondItem="6lq-Fg-jWw" secondAttribute="bottom" id="u8Y-Zn-rdv"/>
+                <constraint firstItem="VOw-JO-Uns" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="76q-VM-PGL"/>
+                <constraint firstAttribute="trailing" secondItem="VOw-JO-Uns" secondAttribute="trailing" id="SaN-QP-Jbr"/>
+                <constraint firstAttribute="bottom" secondItem="VOw-JO-Uns" secondAttribute="bottom" id="W0Q-Kg-8sq"/>
+                <constraint firstItem="VOw-JO-Uns" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iNx-lW-rF1"/>
             </constraints>
-            <size key="customSize" width="177" height="261"/>
+            <size key="customSize" width="177" height="210"/>
             <connections>
+                <outlet property="nameLabel" destination="yht-sG-Jle" id="q94-ZN-SOK"/>
                 <outlet property="profileImageView" destination="6lq-Fg-jWw" id="UI3-Ze-ALm"/>
             </connections>
-            <point key="canvasLocation" x="229.71014492753625" y="155.02232142857142"/>
+            <point key="canvasLocation" x="228.98550724637684" y="136.94196428571428"/>
         </collectionViewCell>
     </objects>
     <resources>

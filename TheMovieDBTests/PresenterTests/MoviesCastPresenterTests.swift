@@ -46,9 +46,9 @@ class MoviesCastPresenterTests: XCTestCase {
         }
         // THEN
         wait(for: [expectation], timeout: 3.0)
-        let expectedActor = Cast(department: "Acting", popularity: 93.792, profileImageURL: URL(string: "https://image.tmdb.org/t/p/original/wIflU6AJSz4pAuTAp3ra4vLwJ2i.jpg")!)
+        let expectedActor = Cast(name: "Brad Pitt", department: "Acting", popularity: 93.792, profileImageURL: URL(string: "https://image.tmdb.org/t/p/original/wIflU6AJSz4pAuTAp3ra4vLwJ2i.jpg")!)
         XCTAssertEqual(sut.actor(at: 0), expectedActor)
-        let expectedDirector = Cast(department: "Directing", popularity: 1.11, profileImageURL: URL(string: "https://image.tmdb.org/t/p/original")!)
+        let expectedDirector = Cast(name: "Andrew Shea", department: "Directing", popularity: 1.11, profileImageURL: URL(string: "https://image.tmdb.org/t/p/original")!)
         XCTAssertEqual(sut.director(at: 0), expectedDirector)
     }
 }
