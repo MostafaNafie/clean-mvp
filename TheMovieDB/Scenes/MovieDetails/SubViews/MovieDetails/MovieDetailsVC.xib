@@ -65,7 +65,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fjh-mR-jty">
-                    <rect key="frame" x="344" y="104" width="50" height="50"/>
+                    <rect key="frame" x="339" y="109" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="5lG-oV-yXn"/>
                         <constraint firstAttribute="height" constant="50" id="P72-Sq-2X0"/>
@@ -85,8 +85,8 @@
                 <constraint firstItem="VKc-Qa-l8h" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Vkv-xI-Ern"/>
                 <constraint firstItem="VKc-Qa-l8h" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="b0g-OW-Stz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VKc-Qa-l8h" secondAttribute="trailing" constant="20" id="or2-fJ-FGt"/>
-                <constraint firstItem="Fjh-mR-jty" firstAttribute="trailing" secondItem="akX-hP-fS8" secondAttribute="trailing" id="uWC-3X-Vyr"/>
-                <constraint firstItem="Fjh-mR-jty" firstAttribute="top" secondItem="akX-hP-fS8" secondAttribute="top" id="z4y-1M-ywJ"/>
+                <constraint firstItem="Fjh-mR-jty" firstAttribute="trailing" secondItem="akX-hP-fS8" secondAttribute="trailing" constant="-5" id="uWC-3X-Vyr"/>
+                <constraint firstItem="Fjh-mR-jty" firstAttribute="top" secondItem="akX-hP-fS8" secondAttribute="top" constant="5" id="z4y-1M-ywJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-304.34782608695656" y="218.97321428571428"/>

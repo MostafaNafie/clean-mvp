@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct URLSessionClient: HTTPClient {
+final class URLSessionClient: HTTPClient {
     func perform<T: Decodable>(_ urlRequest: URLRequest, completion: @escaping (Result<T, Error>) -> ()) {
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             print("🌐 Request >>>", urlRequest.url!.absoluteString)

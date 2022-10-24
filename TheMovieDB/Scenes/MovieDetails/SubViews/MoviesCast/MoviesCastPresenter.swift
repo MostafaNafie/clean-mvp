@@ -24,8 +24,7 @@ final class MoviesCastPresenter: BasePresenter<MoviesCastView> {
     // MARK: - Public Methods
     func fetchCast(for moviesIDs: [Int], completion: (() -> ())? = nil) {
         movieCastUseCase.fetchMoviesCast(for: moviesIDs) { [weak self] result in
-            self?.handleCastResult(result)
-            completion?()
+            self?.handleCastResult(result) { completion?() }
         }
     }
     
@@ -48,7 +47,7 @@ final class MoviesCastPresenter: BasePresenter<MoviesCastView> {
 
 // MARK: - Private Helpers
 private extension MoviesCastPresenter {
-    func handleCastResult(_ result: Result<(actors: [Cast], directors: [Cast]), Error>) {
+    func handleCastResult(_ result: Result<(actors: [Cast], directors: [Cast]), Error>, completion: (() -> ())? = nil) {
         switch result {
             case .success(let cast):
                 self.actors = cast.actors
@@ -58,5 +57,6 @@ private extension MoviesCastPresenter {
                 view.showError(with: "\(type(of: error))", and: error.localizedDescription)
         }
         view.stopLoading()
+        completion?()
     }
 }

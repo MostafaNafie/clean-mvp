@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MoviesResponseMapper {
+final class MoviesResponseMapper {
     func mapResponseToMovies(_ response: MoviesNetwork.Response) -> [Movie] {
         response.results.compactMap {
             .init(id: $0.id,

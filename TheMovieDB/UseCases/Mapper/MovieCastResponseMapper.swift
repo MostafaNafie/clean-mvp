@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieCastResponseMapper {
+final class MovieCastResponseMapper {
     func mapResponseToActorsAndDirectors(_ response: CastNetwork.Response) -> (actors: [Cast], directors: [Cast]) {
         let cast = response.crew.map { cast in
             Cast(name: cast.name,

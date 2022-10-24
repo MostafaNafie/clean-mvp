@@ -12,7 +12,7 @@ protocol Factory {
     func makeMovieDetailsContainerVC(with id: Int) -> MovieDetailsContainerVC
 }
 
-struct DependencyFactory: Factory {
+final class DependencyFactory: Factory {
     private let urlSessionClient = URLSessionClient()
     private let moviesResponseMapper = MoviesResponseMapper()
     private let watchlistUseCase = WatchlistUseCase(dataStore: WatchlistDataStore())

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MovieCastUseCase {
+final class MovieCastUseCase {
     // MARK: - Properties
     private let networkService: MovieCastServicing
     private let movieCastResponseMapper: MovieCastResponseMapper
@@ -66,16 +66,17 @@ private extension MovieCastUseCase {
     func fetchMovieCast(by id: Int, completion: @escaping () -> ()) {
         networkService.fetchMovieCast(by: id) { [weak self] result in
             guard let self = self else { return }
-            defer { completion() }
             switch result {
                 case .success(let castResponse):
                     let mappedResponse = self.movieCastResponseMapper.mapResponseToActorsAndDirectors(castResponse)
                     self.serialQueue.async {
                         self.allActors.append(contentsOf: mappedResponse.actors)
                         self.allDirectors.append(contentsOf: mappedResponse.directors)
+                        completion()
                     }
                 case .failure(let error):
                     self.error = error
+                    completion()
             }
         }
     }

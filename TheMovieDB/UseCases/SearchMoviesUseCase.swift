@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SearchMoviesUseCase {
+final class SearchMoviesUseCase {
     private let networkService: SearchMoviesServicing
     private let moviesResponseMapper: MoviesResponseMapper
     
@@ -17,12 +17,13 @@ struct SearchMoviesUseCase {
     }
     
     func fetchMovies(by query: String, at page: Int, completion: @escaping (Result<(totalPages: Int, movies: [Movie]), Error>) -> ()) {
-        networkService.fetchMovies(by: query, at: page) { result in
+        networkService.fetchMovies(by: query, at: page) { [weak self] result in
+            guard let self = self else { return }
             var response: Result<(totalPages: Int, movies: [Movie]), Error>!
             defer { completion(response) }
             switch result {
                 case .success(let moviesResponse):
-                    let movies = moviesResponseMapper.mapResponseToMovies(moviesResponse)
+                    let movies = self.moviesResponseMapper.mapResponseToMovies(moviesResponse)
                     response = .success((moviesResponse.totalPages, movies))
                 case .failure(let error):
                     response = .failure(error)

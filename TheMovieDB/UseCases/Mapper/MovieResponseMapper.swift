@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieResponseMapper {
+final class MovieResponseMapper {
     func mapResponseToMovieDetails(_ response: MoviesNetwork.Movie) -> MovieDetails {
         let releaseDate = response.releaseDate ?? "N/A"
         let status = response.status ?? "N/A"
