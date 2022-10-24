@@ -46,10 +46,14 @@ class MovieCastUseCase {
                 return
             }
             
-            let sortedActors = self.allActors
+            // Array is converted into Set to eliminate duplicates
+            let uniqueActors = Array(Set(self.allActors))
+            let sortedActors = uniqueActors
                 .sorted(by: { $0.popularity > $1.popularity })
                 .prefix(5)
-            let sortedDirectors = self.allDirectors
+            
+            let uniqueDirectors = Array(Set(self.allDirectors))
+            let sortedDirectors = uniqueDirectors
                 .sorted(by: { $0.popularity > $1.popularity })
                 .prefix(5)
             response = .success((Array(sortedActors), Array(sortedDirectors)))
