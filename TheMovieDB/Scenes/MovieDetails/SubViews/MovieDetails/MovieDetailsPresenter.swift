@@ -14,15 +14,15 @@ final class MovieDetailsPresenter: BasePresenter<MovieDetailsView> {
     // MARK: - Private Properties
     private let id: Int
     private let movieDetailsUseCase: MovieDetailsUseCase
-    private let watchlistDataStore: WatchlistDataStoring
+    private let watchlistUseCase: WatchlistUseCase
     
     // MARK: - Init
     init(id: Int,
          movieDetailsUseCase: MovieDetailsUseCase,
-         watchlistDataStore: WatchlistDataStoring) {
+         watchlistUseCase: WatchlistUseCase) {
         self.id = id
         self.movieDetailsUseCase = movieDetailsUseCase
-        self.watchlistDataStore = watchlistDataStore
+        self.watchlistUseCase = watchlistUseCase
     }
     
     // MARK: - View Lifecycle
@@ -31,10 +31,10 @@ final class MovieDetailsPresenter: BasePresenter<MovieDetailsView> {
     }
     
     func watchlistButtonTapped() {
-        if watchlistDataStore.containsMovie(with: id) {
-            watchlistDataStore.removeMovie(with: id)
+        if watchlistUseCase.containsMovie(with: id) {
+            watchlistUseCase.removeMovie(with: id)
         } else {
-            watchlistDataStore.addMovie(with: id)
+            watchlistUseCase.addMovie(with: id)
         }
     }
 }
@@ -51,7 +51,7 @@ private extension MovieDetailsPresenter {
     func handleMovieResult(_ result: Result<MovieDetails, Error>) {
         switch result {
             case .success(var movieDetails):
-                movieDetails.isAddedToWatchlist = watchlistDataStore.containsMovie(with: id)
+                movieDetails.isAddedToWatchlist = watchlistUseCase.containsMovie(with: id)
                 view.show(movieDetails)
             case .failure(let error):
                 view.showError(with: "\(type(of: error))", and: error.localizedDescription)

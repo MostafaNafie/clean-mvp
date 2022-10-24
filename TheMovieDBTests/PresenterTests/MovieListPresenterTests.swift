@@ -21,7 +21,7 @@ class MovieListPresenterTests: XCTestCase {
         sut = MovieListPresenter(popularMoviesUseCase: popularMoviesUseCase,
                                  searchMoviesUseCase: searchMoviesUseCase,
                                  coordinator: spyCoordinator,
-                                 watchlistDataStore: FakeWatchlistDataStore())
+                                 watchlistUseCase: WatchlistUseCase(dataStore: FakeWatchlistDataStore()))
         sut.view = spyMovieListView
     }
 

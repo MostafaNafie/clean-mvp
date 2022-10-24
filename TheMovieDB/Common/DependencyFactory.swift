@@ -15,7 +15,7 @@ protocol Factory {
 struct DependencyFactory: Factory {
     private let urlSessionClient = URLSessionClient()
     private let moviesResponseMapper = MoviesResponseMapper()
-    private let watchlistDataStore = WatchlistDataStore()
+    private let watchlistUseCase = WatchlistUseCase(dataStore: WatchlistDataStore())
     
     // MARK: - Public Methods
     func makeMovieListVC(_ coordinator: MovieListCoordinating) -> MovieListVC {
@@ -30,7 +30,7 @@ struct DependencyFactory: Factory {
         let presenter = MovieListPresenter(popularMoviesUseCase: popularMoviesUseCase,
                                            searchMoviesUseCase: searchMoviesUseCase,
                                            coordinator: coordinator,
-                                           watchlistDataStore: watchlistDataStore)
+                                           watchlistUseCase: watchlistUseCase)
         
         let movieListVC = MovieListVC(presenter: presenter)
         presenter.view = movieListVC
@@ -57,7 +57,7 @@ private extension DependencyFactory {
                                                       movieResponseMapper: movieResponseMapper)
         let presenter = MovieDetailsPresenter(id: id,
                                               movieDetailsUseCase: movieDetailsUseCase,
-                                              watchlistDataStore: watchlistDataStore)
+                                              watchlistUseCase: watchlistUseCase)
         
         let movieDetailsVC = MovieDetailsVC(presenter: presenter)
         presenter.view = movieDetailsVC

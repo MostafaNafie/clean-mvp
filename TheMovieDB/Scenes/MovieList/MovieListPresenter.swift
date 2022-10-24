@@ -20,7 +20,7 @@ final class MovieListPresenter: BasePresenter<MovieListView> {
     private let popularMoviesUseCase: PopularMoviesUseCase
     private let searchMoviesUseCase: SearchMoviesUseCase
     private let coordinator: MovieListCoordinating
-    private let watchlistDataStore: WatchlistDataStoring
+    private let watchlistUseCase: WatchlistUseCase
     
     private var currentState: MovieListPresenterState = .popularMovies
     private var movies: [Movie] =  []
@@ -32,11 +32,11 @@ final class MovieListPresenter: BasePresenter<MovieListView> {
     init(popularMoviesUseCase: PopularMoviesUseCase,
          searchMoviesUseCase: SearchMoviesUseCase,
          coordinator: MovieListCoordinating,
-         watchlistDataStore: WatchlistDataStoring) {
+         watchlistUseCase: WatchlistUseCase) {
         self.popularMoviesUseCase = popularMoviesUseCase
         self.searchMoviesUseCase = searchMoviesUseCase
         self.coordinator = coordinator
-        self.watchlistDataStore = watchlistDataStore
+        self.watchlistUseCase = watchlistUseCase
     }
     
     // MARK: - View Lifecycle
@@ -51,7 +51,7 @@ final class MovieListPresenter: BasePresenter<MovieListView> {
     
     func movie(at row: Int) -> Movie {
         var movie = movies[row]
-        movie.isAddedToWatchList = watchlistDataStore.containsMovie(with: movie.id)
+        movie.isAddedToWatchList = watchlistUseCase.containsMovie(with: movie.id)
         return movie
     }
     

@@ -18,7 +18,7 @@ class MovieDetailsPresenterTests: XCTestCase {
     override func setUp() {
         sut = MovieDetailsPresenter(id: 0,
                                     movieDetailsUseCase: movieDetailsUseCase,
-                                    watchlistDataStore: FakeWatchlistDataStore())
+                                    watchlistUseCase: WatchlistUseCase(dataStore: FakeWatchlistDataStore()))
         sut.view = spyMovieDetailsView
     }
     
