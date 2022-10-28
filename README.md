@@ -2,8 +2,8 @@
 
 <video src='https://user-images.githubusercontent.com/48848704/197476779-77e2bf7e-9f2f-458c-b331-5b833876df29.mp4' width=300></video>
 
-## Low-Level Design
-![Low-Level Design](Media/LowLevelDesign.png)
+---
+
 
 ## Requirements:
 ### Functional:
@@ -23,7 +23,11 @@
 - Reliability:
   - Unit tests.
 
-## Design Decisions
+## Low-Level Design
+![Low-Level Design](Media/LowLevelDesign.png)
+
+---
+### Design Decisions
 - UI:
   - UIKit
   - MVP Architecture
@@ -36,7 +40,7 @@
   - Coordinator pattern for navigation.
 
 - Dependency Manager:
-  - CocoaPods
+  - Swift Package Manager (SPM)
 
 - Dependencies:
   - [Kingfisher](https://github.com/onevcat/Kingfisher): Downloading and caching images from the web.
