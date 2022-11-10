@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 extension UIImageView {
-    func setImage(with url: URL, and placeholder: String = "poster-placeholder") {
+    func setImage(with url: URL, and placeholder: String = Resources.Images.posterPlaceholder) {
         self.kf.indicatorType = .activity
         self.kf.setImage(with: url,
                          placeholder: UIImage(named: placeholder),

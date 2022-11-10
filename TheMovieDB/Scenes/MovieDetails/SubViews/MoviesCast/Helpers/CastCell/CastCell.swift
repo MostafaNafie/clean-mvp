@@ -28,6 +28,6 @@ class CastCell: UICollectionViewCell {
     // MARK: - Public Methods
     func configure(_ cast: Cast) {
         nameLabel.text = cast.name
-        profileImageView.setImage(with: cast.profileImageURL, and: "profile-placeholder")
+        profileImageView.setImage(with: cast.profileImageURL, and: Resources.Images.profilePlaceholder)
     }
 }

@@ -35,6 +35,6 @@ final class MovieCell: UITableViewCell {
         releaseYearLabel.text = movie.releaseYear
         overviewLabel.text = movie.overview
         posterImageView.setImage(with: movie.posterURL)
-        watchlistImageView.image = UIImage(named: movie.isAddedToWatchList ? "heart-filled" : "heart-empty")
+        watchlistImageView.image = UIImage(named: movie.isAddedToWatchList ? Resources.Images.heartFilled : Resources.Images.heartEmpty)
     }
 }

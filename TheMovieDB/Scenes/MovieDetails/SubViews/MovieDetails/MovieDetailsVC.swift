@@ -23,8 +23,8 @@ final class MovieDetailsVC: BaseVC<MovieDetailsView, MovieDetailsPresenter> {
     // MARK: - View Lifecycle
     override func setupUI() {
         posterImageView.layer.cornerRadius = 20
-        addToWatchlistButton.setImage(UIImage(named: "heart-filled"), for: .selected)
-        addToWatchlistButton.setImage(UIImage(named: "heart-empty"), for: .normal)
+        addToWatchlistButton.setImage(UIImage(named: Resources.Images.heartFilled), for: .selected)
+        addToWatchlistButton.setImage(UIImage(named: Resources.Images.heartEmpty), for: .normal)
     }
     
     // MARK: - Actions
