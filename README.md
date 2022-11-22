@@ -1,4 +1,4 @@
-# The MovieDB
+# Clean MVP
 
 <video src='https://user-images.githubusercontent.com/48848704/197476779-77e2bf7e-9f2f-458c-b331-5b833876df29.mp4' width=300></video>
 
